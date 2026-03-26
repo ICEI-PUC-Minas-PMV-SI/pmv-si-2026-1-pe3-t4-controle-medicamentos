@@ -120,11 +120,13 @@ Fluxo Principal:
 	2.	O sistema solicita o identificador do medicamento e a quantidade a ser movimentada.
 	3.	O usuário informa os dados.
 	4.	Para Entrada:
+	
 a. O sistema valida as informações.
 b. O sistema registra a entrada com data e hora.
 c. O sistema atualiza o estoque.
 
 	5.	Para Saída:
+	
 a. O sistema valida a disponibilidade do medicamento e a data de vencimento.
 b. O sistema registra a saída com data, hora e usuário responsável.
 c. O sistema atualiza o estoque.
@@ -148,11 +150,13 @@ Fluxo Principal:
 
 	1.	O usuário solicita a consulta de medicamentos ou o acompanhamento de vencimentos.
 	2.	Para Consulta de Disponibilidade:
+	
 a. O sistema solicita critérios de busca (nome, código ou tipo).
 b. O usuário informa os critérios.
 c. O sistema busca os medicamentos e exibe: Quantidade disponível, Lote, Data de Vencimento, Nível de Criticidade.
 	
  3.	Para Acompanhamento de Vencimentos:
+    
 a. O sistema busca medicamentos com vencimento próximo.
 b. O sistema exibe uma lista com alertas de vencimento.
 
