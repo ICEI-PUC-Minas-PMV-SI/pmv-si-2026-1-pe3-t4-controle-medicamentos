@@ -79,8 +79,11 @@ Pós-condições: Dados do medicamento cadastrados, atualizados ou removidos no 
 Fluxo Principal:
 
 	1.	O Farmacêutico inicia a operação de cadastro, atualização ou remoção de um medicamento.
+	
 	2.	O sistema solicita o identificador único (código de barras ou ID) do medicamento.
+	
 	3.	O Farmacêutico informa o identificador.
+	
 	4.	Para Cadastro:
 	a. O sistema valida se o medicamento já está cadastrado. Se sim, informa o farmacêutico e cancela a operação.
 	b. O sistema apresenta um formulário para preenchimento dos dados (Nome, Tipo, Nível de Criticidade, Lote, Data de Fabricação, Data de Vencimento).
@@ -117,8 +120,11 @@ Pós-condições: Quantidade em estoque atualizada; Registro de entrada/saída a
 Fluxo Principal:
 
 	1.	O usuário (Farmacêutico para entrada, Enfermeiro/Técnico/Auxiliar para saída) solicita registrar uma movimentação de estoque.
+	
 	2.	O sistema solicita o identificador do medicamento e a quantidade a ser movimentada.
+	
 	3.	O usuário informa os dados.
+	
 	4.	Para Entrada:
 	a. O sistema valida as informações.
 	b. O sistema registra a entrada com data e hora.
@@ -147,6 +153,7 @@ Pós-condições: Informações de disponibilidade ou lista de vencimentos exibi
 Fluxo Principal:
 
 	1.	O usuário solicita a consulta de medicamentos ou o acompanhamento de vencimentos.
+	
 	2.	Para Consulta de Disponibilidade:
 	a. O sistema solicita critérios de busca (nome, código ou tipo).
 	b. O usuário informa os critérios.
@@ -169,9 +176,13 @@ Pós-condições: Relatório exibido ou exportado.
 Fluxo Principal:
 
 	1.	O usuário solicita a geração de um relatório.
+	
 	2.	O sistema apresenta opções de filtros (período, usuário, tipo de movimentação, etc.).
+	
 	3.	O usuário define os filtros desejados.
+	
 	4.	O sistema processa os dados conforme os filtros aplicados.
+	
 	5.	O sistema exibe o relatório contendo informações sobre: Entradas, Saídas, Alertas (ex: vencimentos), Medicamentos críticos, entre outros dados relevantes para auditoria.
  
 
