@@ -64,52 +64,116 @@ Como observado no diagrama de casos de uso da Figura 1, a secretária poderá ge
  
 ### 3.4.2 Descrições de Casos de Uso
 
-Cada caso de uso deve ter a sua descrição representada nesta seção. Exemplo:
+Abaixo estão detalhadas as descrições dos principais casos de uso do sistema de gestão de medicamentos
 
-#### Gerenciar Professor (CSU01)
+#### Gerenciamento de Cadastro de Medicamentos (CSU01)
 
-Sumário: A Secretária realiza a gestão (inclusão, remoção, alteração e consulta) dos dados sobre professores.
+Sumário: Permite ao farmacêutico realizar o cadastro, atualização e remoção de informações de medicamentos no sistema, garantindo a integridade e a acurácia dos dados.
 
-Ator Primário: Secretária.
+Ator Primário: Farmacêutico
 
-Ator Secundário: Coordenador.
+Pré-condições: Usuário autenticado.
 
-Pré-condições: A Secretária deve ser validada pelo Sistema.
+Pós-condições: Dados do medicamento cadastrados, atualizados ou removidos no sistema.
 
 Fluxo Principal:
 
-1) 	A Secretária requisita manutenção de professores.
-2) 	O Sistema apresenta as operações que podem ser realizadas: inclusão de um novo professor, alteração de um professor, a exclusão de um professor e a consulta de dados de um professor.
-3) 	A Secretária seleciona a operação desejada: Inclusão, Exclusão, Alteração ou Consulta, ou opta por finalizar o caso de uso.
-4) 	Se a Secretária desejar continuar com a gestão de professores, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+	1.	O Farmacêutico inicia a operação de cadastro, atualização ou remoção de um medicamento.
+	2.	O sistema solicita o identificador único (código de barras ou ID) do medicamento.
+	3.	O Farmacêutico informa o identificador.
+	4.	Para Cadastro:
+a. O sistema valida se o medicamento já está cadastrado. Se sim, informa o farmacêutico e cancela a operação.
+b. O sistema apresenta um formulário para preenchimento dos dados (Nome, Tipo, Nível de Criticidade, Lote, Data de Fabricação, Data de Vencimento).
+c. O Farmacêutico preenche os dados.
+d. O sistema valida as informações e registra o novo medicamento.
 
-Fluxo Alternativo (3): Inclusão
+	5.	Para Atualização:
+a. O sistema recupera os dados do medicamento correspondente ao identificador.
+b. O sistema apresenta os dados para edição.
+c. O Farmacêutico altera as informações desejadas.
+d. O sistema valida os dados e salva as alterações.
 
-a)	A Secretária requisita a inclusão de um professor. <br>
-b)	O Sistema apresenta uma janela solicitando o CPF do professor a ser cadastrado. <br>
-c)	A Secretária fornece o dado solicitado. <br>
-d)	O Sistema verifica se o professor já está cadastrado. Se sim, o Sistema reporta o fato e volta ao início; caso contrário, apresenta um formulário em branco para que os detalhes do professor (Código, Nome, Endereço, CEP, Estado, Cidade, Bairro, Telefone, Identidade, Sexo, Fax, CPF, Data do Cadastro e Observação) sejam incluídos. <br>
-e)	A Secretária fornece os detalhes do novo professor. <br>
-f)	O Sistema verifica a validade dos dados. Se os dados forem válidos, inclui o novo professor e a grade listando os professores cadastrados é atualizada; caso contrário, o Sistema reporta o fato, solicita novos dados e repete a verificação. <br>
+	6.	Para Remoção:
+a. O sistema apresenta os dados do medicamento para confirmação.
+b. O sistema solicita confirmação da exclusão.
+c. O Farmacêutico confirma a operação.
+d. O sistema remove o medicamento do banco de dados.
 
-Fluxo Alternativo (3): Remoção
+Fluxos Alternativos:
 
-a)	A Secretária seleciona um professor e requisita ao Sistema que o remova. <br>
-b)	Se o professor pode ser removido, o Sistema realiza a remoção; caso contrário, o Sistema reporta o fato. <br>
+	•	Medicamento já cadastrado (Cadastro): O sistema identifica que o medicamento já existe, informa ao usuário e cancela o cadastro.
+	•	Cancelamento (Remoção): O Farmacêutico cancela a operação, e o sistema encerra o caso de uso sem alterações
 
-Fluxo Alternativo (3): Alteração
-
-a)	A Secretária altera um ou mais dos detalhes do professor e requisita sua atualização. <br>
-b)	O Sistema verifica a validade dos dados e, se eles forem válidos, altera os dados na lista de professores, caso contrário, o erro é reportado. <br>
+ #### Gerenciamento de Estoque de Medicamentos (CSU02)
  
-Fluxo Alternativo (3): Consulta
+ Sumário: Permite registrar a entrada e saída de medicamentos do estoque, atualizando as quantidades disponíveis e mantendo um histórico de movimentações.
 
-a)	A Secretária opta por pesquisar pelo nome ou código e solicita a consulta sobre a lista de professores. <br>
-b)	O Sistema apresenta uma lista professores. <br>
-c)	A Secretária seleciona o professor. <br>
-d)	O Sistema apresenta os detalhes do professor no formulário de professores. <br>
+Atores Primários: Farmacêutico (Entrada), Enfermeiro/Técnico, Auxiliar de Farmácia (Saída)
 
-Pós-condições: Um professor foi inserido ou removido, seus dados foram alterados ou apresentados na tela.
+Pré-condições: Usuário autenticado; Medicamento previamente cadastrado no sistema.
+
+Pós-condições: Quantidade em estoque atualizada; Registro de entrada/saída armazenado.
+
+Fluxo Principal:
+
+	1.	O usuário (Farmacêutico para entrada, Enfermeiro/Técnico/Auxiliar para saída) solicita registrar uma movimentação de estoque.
+	2.	O sistema solicita o identificador do medicamento e a quantidade a ser movimentada.
+	3.	O usuário informa os dados.
+	4.	Para Entrada:
+a. O sistema valida as informações.
+b. O sistema registra a entrada com data e hora.
+c. O sistema atualiza o estoque.
+
+	5.	Para Saída:
+a. O sistema valida a disponibilidade do medicamento e a data de vencimento.
+b. O sistema registra a saída com data, hora e usuário responsável.
+c. O sistema atualiza o estoque.
+
+Fluxos Alternativos:
+
+	•	Estoque insuficiente (Saída): O sistema detecta quantidade insuficiente, informa o erro ao usuário, que pode ajustar a quantidade ou cancelar a operação.
+	•	Medicamento vencido (Saída): O sistema identifica medicamento vencido, bloqueia a operação e notifica o usuário.
+
+### Consulta e Monitoramento de Medicamentos (CSU03)
+
+Sumário: Permite aos usuários consultar a disponibilidade de medicamentos em estoque e monitorar aqueles próximos ao vencimento, facilitando a gestão e evitando perdas.
+
+Atores Primários: Farmacêutico, Enfermeiro/Técnico, Gestor/Coordenador
+
+Pré-condições: Usuário autenticado.
+
+Pós-condições: Informações de disponibilidade ou lista de vencimentos exibidas ao usuário.
+
+Fluxo Principal:
+
+	1.	O usuário solicita a consulta de medicamentos ou o acompanhamento de vencimentos.
+	2.	Para Consulta de Disponibilidade:
+a. O sistema solicita critérios de busca (nome, código ou tipo).
+b. O usuário informa os critérios.
+c. O sistema busca os medicamentos e exibe: Quantidade disponível, Lote, Data de Vencimento, Nível de Criticidade.
+	
+ 3.	Para Acompanhamento de Vencimentos:
+a. O sistema busca medicamentos com vencimento próximo.
+b. O sistema exibe uma lista com alertas de vencimento.
+
+### Geração de Relatórios de Auditoria (CSU04)
+
+Sumário: Permite a geração de relatórios detalhados sobre as movimentações de medicamentos, alertas e criticidade, fornecendo dados essenciais para análise e controle gerencial.
+
+Atores Primários: Gestor/Coordenador, Farmacêutico
+
+Pré-condições: Usuário autenticado com permissão de acesso a relatórios.
+
+Pós-condições: Relatório exibido ou exportado.
+
+Fluxo Principal:
+
+	1.	O usuário solicita a geração de um relatório.
+	2.	O sistema apresenta opções de filtros (período, usuário, tipo de movimentação, etc.).
+	3.	O usuário define os filtros desejados.
+	4.	O sistema processa os dados conforme os filtros aplicados.
+	5.	O sistema exibe o relatório contendo informações sobre: Entradas, Saídas, Alertas (ex: vencimentos), Medicamentos críticos, entre outros dados relevantes para auditoria.
+ 
 
 ### 3.4.3 Diagrama de Classes 
 
