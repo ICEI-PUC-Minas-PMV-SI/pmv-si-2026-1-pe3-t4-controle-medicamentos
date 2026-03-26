@@ -82,22 +82,22 @@ Fluxo Principal:
 	2.	O sistema solicita o identificador único (código de barras ou ID) do medicamento.
 	3.	O Farmacêutico informa o identificador.
 	4.	Para Cadastro:
-a. O sistema valida se o medicamento já está cadastrado. Se sim, informa o farmacêutico e cancela a operação.
-b. O sistema apresenta um formulário para preenchimento dos dados (Nome, Tipo, Nível de Criticidade, Lote, Data de Fabricação, Data de Vencimento).
-c. O Farmacêutico preenche os dados.
-d. O sistema valida as informações e registra o novo medicamento.
+	a. O sistema valida se o medicamento já está cadastrado. Se sim, informa o farmacêutico e cancela a operação.
+	b. O sistema apresenta um formulário para preenchimento dos dados (Nome, Tipo, Nível de Criticidade, Lote, Data de Fabricação, Data de Vencimento).
+	c. O Farmacêutico preenche os dados.
+	d. O sistema valida as informações e registra o novo medicamento.
 
 	5.	Para Atualização:
-a. O sistema recupera os dados do medicamento correspondente ao identificador.
-b. O sistema apresenta os dados para edição.
-c. O Farmacêutico altera as informações desejadas.
-d. O sistema valida os dados e salva as alterações.
+	a. O sistema recupera os dados do medicamento correspondente ao identificador.
+	b. O sistema apresenta os dados para edição.
+	c. O Farmacêutico altera as informações desejadas.
+	d. O sistema valida os dados e salva as alterações.
 
 	6.	Para Remoção:
-a. O sistema apresenta os dados do medicamento para confirmação.
-b. O sistema solicita confirmação da exclusão.
-c. O Farmacêutico confirma a operação.
-d. O sistema remove o medicamento do banco de dados.
+	a. O sistema apresenta os dados do medicamento para confirmação.
+	b. O sistema solicita confirmação da exclusão.
+	c. O Farmacêutico confirma a operação.
+	d. O sistema remove o medicamento do banco de dados.
 
 Fluxos Alternativos:
 
@@ -120,20 +120,14 @@ Fluxo Principal:
 	2.	O sistema solicita o identificador do medicamento e a quantidade a ser movimentada.
 	3.	O usuário informa os dados.
 	4.	Para Entrada:
-	
-a. O sistema valida as informações.
-
-b. O sistema registra a entrada com data e hora.
-
-c. O sistema atualiza o estoque.
+	a. O sistema valida as informações.
+	b. O sistema registra a entrada com data e hora.
+	c. O sistema atualiza o estoque.
 
 	5.	Para Saída:
-	
-a. O sistema valida a disponibilidade do medicamento e a data de vencimento.
-
-b. O sistema registra a saída com data, hora e usuário responsável.
-
-c. O sistema atualiza o estoque.
+	a. O sistema valida a disponibilidade do medicamento e a data de vencimento.
+	b. O sistema registra a saída com data, hora e usuário responsável.
+	c. O sistema atualiza o estoque.
 
 Fluxos Alternativos:
 
@@ -154,18 +148,13 @@ Fluxo Principal:
 
 	1.	O usuário solicita a consulta de medicamentos ou o acompanhamento de vencimentos.
 	2.	Para Consulta de Disponibilidade:
+	a. O sistema solicita critérios de busca (nome, código ou tipo).
+	b. O usuário informa os critérios.
+	c. O sistema busca os medicamentos e exibe: Quantidade disponível, Lote, Data de Vencimento, Nível de Criticidade.
 	
-a. O sistema solicita critérios de busca (nome, código ou tipo).
-
-b. O usuário informa os critérios.
-
-c. O sistema busca os medicamentos e exibe: Quantidade disponível, Lote, Data de Vencimento, Nível de Criticidade.
-	
- 3.	Para Acompanhamento de Vencimentos:
-    
-a. O sistema busca medicamentos com vencimento próximo.
-
-b. O sistema exibe uma lista com alertas de vencimento.
+ 	3.	Para Acompanhamento de Vencimentos:  
+	a. O sistema busca medicamentos com vencimento próximo.
+	b. O sistema exibe uma lista com alertas de vencimento.
 
 ### Geração de Relatórios de Auditoria (CSU04)
 
