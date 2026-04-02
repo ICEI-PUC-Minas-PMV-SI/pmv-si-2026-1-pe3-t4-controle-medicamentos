@@ -3,27 +3,40 @@
 Nesta parte do trabalho você deve detalhar a documentação dos requisitos do sistema proposto de acordo com as seções a seguir. Ressalta-se que aqui é utilizado como exemplo um sistema de gestão de cursos de aperfeiçoamento.
 
 ## 3.1 Objetivos deste documento
-Descrever e especificar as necessidades da Coordenação do Curso de Sistemas de Informação da PUC Minas que devem ser atendidas pelo projeto SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento.
+Descrever e especificar as necessidades das unidades de saúde no controle de medicamentos, definindo os requisitos do sistema proposto para gestão de estoque, movimentações e acompanhamento de medicamentos.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
-O produto será denominado SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento. Ele terá somente um componente (módulo) com os devidos elementos necessários à gestão de cursos.
+O produto será denominado SCMU – Sistema de Controle de Medicamentos em Unidades de Saúde.
+
+O sistema será composto pelos seguintes módulos principais:
+
+Cadastro de medicamentos
+Controle de estoque
+Registro de entradas e saídas
+Consulta de disponibilidade
+Relatórios e acompanhamento
 
 ### 3.2.2 Missão do produto
-Gerenciar informações sobre a oferta de cursos de aperfeiçoamento, gerenciar a composição das turmas, alunos, professores e matrículas. 
+Gerenciar de forma eficiente o estoque de medicamentos em unidades de saúde, permitindo registrar movimentações, acompanhar quantidades disponíveis, controlar vencimentos e facilitar o acesso às informações pelos profissionais responsáveis.
 
 ### 3.2.3 Limites do produto
-O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcelas do curso, pagamento a professore e agendamentos. O SCCA não contempla o atendimento a vários cursos de Sistemas de Informação de outras unidades da PUC Minas.
+O sistema não contempla:
+
+Controle financeiro (pagamentos, compras ou orçamento)
+Prescrição médica automatizada
+Integração com sistemas hospitalares externos
 
 ### 3.2.4 Benefícios do produto
 
 | # | Benefício | Valor para o Cliente |
 |--------------------|------------------------------------|----------------------------------------|
-|1	| Facilidade no cadastro de dados |	Essencial |
-|2 | Facilidade na recuperação de informações | Essencial | 
-|3 | Segurança no cadastro de matrículas | Essencial | 
-|4	| Melhoria na comunicação com os alunos	| Recomendável | 
+|1	| Organização do estoque de medicamentos |	Essencial |
+|2 | Redução de erros em registros manuais | Essencial | 
+|3 | Controle de vencimento dos medicamentos | Essencial | 
+|4	| Facilidade de consulta de disponibilidade	| Essencial | 
+|5	| Rastreabilidade das movimentações	| Recomendável |
 
 ## 3.3 Descrição geral do produto
 
