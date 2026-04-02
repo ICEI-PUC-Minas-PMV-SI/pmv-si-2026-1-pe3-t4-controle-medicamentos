@@ -1,4 +1,4 @@
-# Título do Projeto
+# SISTEMA DE CONTROLE DE MEDICAMENTOS EM UNIDADES DE SAÚDE
 
 `CURSO: Sistemas de Informação`
 
@@ -6,20 +6,21 @@
 
 `SEMESTRE: 3º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto consiste no desenvolvimento de um sistema digital para controle de medicamentos em unidades de saúde, com foco na organização e no acompanhamento eficiente do estoque. A solução permitirá registrar entradas e saídas de medicamentos, monitorar quantidades disponíveis e acompanhar datas de vencimento, substituindo controles manuais por um processo mais estruturado e confiável.
+
+O objetivo é facilitar o trabalho dos profissionais envolvidos, oferecendo uma ferramenta simples e intuitiva que auxilie na consulta de informações, na rastreabilidade das movimentações e na tomada de decisões. Dessa forma, o sistema contribui para reduzir desperdícios, evitar a falta de medicamentos e melhorar a eficiência na gestão dos recursos.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Arthur Gabriel Bernz Rivas
+* Luís Márcio de Oliveira Santos
+* Gustavo Henrique Pontes dos Santos
+* Santiago Pereira da Silva
+* Thiago de Carvalho Cardoso
 
 ## Orientador
 
-* Nome completo do professor 
+* Luiz Alberto Ferreira Gomes 
 
 # Planejamento
 
