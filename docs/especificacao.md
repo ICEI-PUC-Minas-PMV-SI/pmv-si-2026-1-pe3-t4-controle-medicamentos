@@ -44,10 +44,23 @@ Integração com sistemas hospitalares externos
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
-| ... |	...	| ... |
+| RF01 | Cadastrar Medicamentos | O sistema deve permitir cadastrar medicamentos com informações básicas como nome, lote, validade e quantidade. |
+| RF02 | Editar Medicamentos | O sistema deve permitir editar os dados dos medicamentos. |
+| RF03 | Remover ou Inativar Medicamentos | O sistema deve permitir remover ou inativar medicamentos. |
+| RF04 | Listar Medicamentos | O sistema deve permitir listar os medicamentos cadastrados. |
+| RF05 | Registrar Entradas de Medicamentos | O sistema deve registrar entradas de medicamentos. |
+| RF06 | Registrar Saídas de Medicamentos | O sistema deve registrar saídas de medicamentos. |
+| RF07 | Atualizar Quantidade em Estoque | O sistema deve atualizar automaticamente a quantidade em estoque. |
+| RF08 | Consultar Quantidade Disponível | O sistema deve permitir consultar a quantidade disponível. |
+| RF09 | Armazenar Histórico de Movimentações | O sistema deve armazenar o histórico de entradas e saídas. |
+| RF10 | Registrar Detalhes das Movimentações | O sistema deve registrar data, quantidade e responsável por cada movimentação. |
+| RF11 | Consultar Histórico por Medicamento | O sistema deve permitir consultar o histórico por medicamento. |
+| RF12 | Consultar Disponibilidade de Medicamentos | O sistema deve permitir consultar a disponibilidade de medicamentos. |
+| RF13 | Informar Falta de Medicamentos | O sistema deve informar quando um medicamento estiver em falta. |
+| RF14 | Consulta Prévia à Utilização | O sistema deve permitir que usuários consultem a disponibilidade antes do uso. |
+| RF15 | Interface Simples e de Fácil Uso | O sistema deve possuir interface simples e de fácil uso. |
+| RF16 | Navegação entre Funcionalidades | O sistema deve permitir navegação entre as funcionalidades principais. |
+| RF17 | Registro Rápido de Saídas | O sistema deve permitir registrar saídas de forma rápida. |
 
 ### 3.3.2 Requisitos Não Funcionais
 
@@ -229,20 +242,22 @@ Fluxo Principal:
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
+A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **Medicamento**, que gerencia as informações gerais e se relaciona com Lote para controle de fabricação e validade. A classe **Estoque** mantém a quantidade atual e é atualizada por meio de instâncias de **Movimentacao** (controladas por **TipoMovimentacao**). Cada movimentação é realizada por um **Usuario**, que possui um **PerfilUsuario** associado definindo seu nível de acesso. Por fim, a classe **Relatorio** compila essas informações para auditoria e controle gerencial.
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
+![image](https://shorturl.at/e0FIA)
 
 
-### 3.4.4 Descrições das Classes 
+### 3.4.4 Descrições das Classes
 
 | # | Nome | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
+|---|------|-----------|
+| 1 | Medicamento | Cadastro geral de medicamentos disponíveis no sistema, contendo nome e categoria. |
+| 2 | Lote | Registro de lotes de um medicamento, contendo número, data de fabricação e data de validade. |
+| 3 | Estoque | Controle da quantidade atual e mínima de um medicamento, vinculado a um ou mais lotes. |
+| 4 | Movimentacao | Registro de entradas, saídas, descartes, ajustes e transferências de medicamentos no estoque. |
+| 5 | Usuario | Cadastro dos profissionais de saúde com acesso ao sistema, contendo nome e perfil de permissão. |
+| 6 | Relatorio | Geração de relatórios de movimentações, estoque e vencimentos em um período determinado. |
+| 7 | TipoMovimentacao | Enumeração dos tipos possíveis de movimentação: ENTRADA, SAIDA, DESCARTE, AJUSTE e TRANSFERENCIA. |
+| 8 | PerfilUsuario | Enumeração dos perfis de acesso: ADMINISTRADOR, FARMACEUTICO, ENFERMEIRO e CONSULTOR. |
