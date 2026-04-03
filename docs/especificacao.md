@@ -246,7 +246,10 @@ A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![image](https://shorturl.at/e0FIA)
+
+<p align="center">
+  <img src="https://shorturl.at/e0FIA" alt="Diagrama do sistema">
+</p>
 
 
 ### 3.4.4 Descrições das Classes
