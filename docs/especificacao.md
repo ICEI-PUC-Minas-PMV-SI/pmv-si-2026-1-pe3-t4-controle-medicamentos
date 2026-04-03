@@ -248,7 +248,7 @@ A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **
  
 
 <p align="center">
-  <img src="https://shorturl.at/e0FIA" alt="Diagrama do sistema">
+  <img src="https://tinyurl.com/mwpn7wna" alt="Diagrama do sistema">
 </p>
 
 
@@ -260,7 +260,7 @@ A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **
 | 2 | Lote | Registro de lotes de um medicamento, contendo número, data de fabricação e data de validade. |
 | 3 | Estoque | Controle da quantidade atual e mínima de um medicamento, vinculado a um ou mais lotes. |
 | 4 | Movimentacao | Registro de entradas, saídas, descartes, ajustes e transferências de medicamentos no estoque. |
-| 5 | Usuario | Cadastro dos profissionais de saúde com acesso ao sistema, contendo nome e perfil de permissão. |
+| 5 | Usuario | Cadastro dos profissionais de saúde com acesso ao sistema, contendo nome, senha e perfil de permissão. |
 | 6 | Relatorio | Geração de relatórios de movimentações, estoque e vencimentos em um período determinado. |
 | 7 | TipoMovimentacao | Enumeração dos tipos possíveis de movimentação: ENTRADA, SAIDA, DESCARTE, AJUSTE e TRANSFERENCIA. |
 | 8 | PerfilUsuario | Enumeração dos perfis de acesso: ADMINISTRADOR, FARMACEUTICO, ENFERMEIRO e CONSULTOR. |
