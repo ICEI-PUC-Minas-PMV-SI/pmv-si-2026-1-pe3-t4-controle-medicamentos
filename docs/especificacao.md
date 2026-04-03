@@ -77,7 +77,7 @@ Integração com sistemas hospitalares externos
 | Código | Requisito Não Funcional | Descrição |
 |-------|--------------------------|-----------|
 | RNF4  | Tempo de Resposta | As consultas de disponibilidade e o registro de saída não devem levar mais de 2 segundos sob condições normais de rede. |
-| RNF5  | Capacidade de Carga | O sistema deve suportar o acesso simultâneo de pelo menos [X] usuários sem degradação de performance. |
+| RNF5  | Capacidade de Carga | O sistema deve suportar o acesso simultâneo de pelo menos 100 usuários sem degradação de performance. |
 
 #### Disponibilidade e Confiabilidade
 
