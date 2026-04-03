@@ -51,13 +51,41 @@ Integração com sistemas hospitalares externos
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Não Funcional (Restrição) |
-|--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
-| ... |	... |	... |
+#### Segurança e Acesso
 
+| Código | Requisito Não Funcional | Descrição |
+|-------|--------------------------|-----------|
+| RNF1  | Controle de Acesso (RBAC) | O sistema deve implementar níveis de acesso distintos (por exemplo: administrador, farmacêutico, enfermeiro), garantindo que apenas usuários autorizados realizem alterações no estoque. |
+| RNF2  | Auditoria (Logs) | Todas as movimentações devem gerar logs inalteráveis, registrando o ID do usuário, data, hora e a ação realizada para fins de auditoria. |
+| RNF3  | Criptografia | Senhas de usuários devem ser armazenadas utilizando bcrypt (custo mínimo 12).<br>Dados sensíveis em repouso devem ser cifrados com AES-256-GCM.<br>A comunicação deve utilizar TLS 1.2 ou superior. |
+
+#### Desempenho e Eficiência
+
+| Código | Requisito Não Funcional | Descrição |
+|-------|--------------------------|-----------|
+| RNF4  | Tempo de Resposta | As consultas de disponibilidade e o registro de saída não devem levar mais de 2 segundos sob condições normais de rede. |
+| RNF5  | Capacidade de Carga | O sistema deve suportar o acesso simultâneo de pelo menos [X] usuários sem degradação de performance. |
+
+#### Disponibilidade e Confiabilidade
+
+| Código | Requisito Não Funcional | Descrição |
+|-------|--------------------------|-----------|
+| RNF6  | Disponibilidade | Por ser um ambiente crítico, o sistema deve ter uma disponibilidade mínima de 99,9%, operando 24/7. |
+| RNF7  | Backup e Recuperação | Devem ser realizados backups automáticos diários da base de dados, com um Plano de Recuperação de Desastres que garanta o retorno da operação em no máximo 1 hora. |
+| RNF8  | Integridade de Dados | O sistema deve garantir as propriedades ACID das transações. |
+
+#### Usabilidade
+
+| Código | Requisito Não Funcional | Descrição |
+|-------|--------------------------|-----------|
+| RNF9  | Facilidade de Aprendizado | A interface deve ser intuitiva o suficiente para que um novo funcionário consiga realizar uma consulta de estoque com no máximo 10 minutos de treinamento. |
+| RNF10 | Responsividade | O sistema deve ser acessível e funcional nos navegadores Google Chrome (v120+), Mozilla Firefox (v121+), Microsoft Edge (v120+) e Safari (v17+)|
+#### Conformidade e Manutenção
+
+| Código | Requisito Não Funcional | Descrição |
+|-------|--------------------------|-----------|
+| RNF11 | Conformidade com a LGPD | O tratamento de dados dos responsáveis pelas movimentações deve estar em conformidade com a Lei Geral de Proteção de Dados (LGPD). |
+| RNF12 | Padrões de Código | O sistema deve ser desenvolvido seguindo o Airbnb JavaScript Style Guide para o frontend.<br>A arquitetura do backend deve adotar separação em camadas (Apresentação, Serviço e Repositório).<br>O versionamento deve seguir o padrão Conventional Commits e Git Flow. |
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
