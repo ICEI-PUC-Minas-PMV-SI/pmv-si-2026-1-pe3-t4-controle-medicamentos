@@ -48,19 +48,12 @@ Integração com sistemas hospitalares externos
 | RF02 | Editar Medicamentos | O sistema deve permitir editar os dados dos medicamentos. |
 | RF03 | Remover ou Inativar Medicamentos | O sistema deve permitir remover ou inativar medicamentos. |
 | RF04 | Listar Medicamentos | O sistema deve permitir listar os medicamentos cadastrados. |
-| RF05 | Registrar Entradas de Medicamentos | O sistema deve registrar entradas de medicamentos. |
-| RF06 | Registrar Saídas de Medicamentos | O sistema deve registrar saídas de medicamentos. |
-| RF07 | Atualizar Quantidade em Estoque | O sistema deve atualizar automaticamente a quantidade em estoque. |
-| RF08 | Consultar Quantidade Disponível | O sistema deve permitir consultar a quantidade disponível. |
-| RF09 | Armazenar Histórico de Movimentações | O sistema deve armazenar o histórico de entradas e saídas. |
-| RF10 | Registrar Detalhes das Movimentações | O sistema deve registrar data, quantidade e responsável por cada movimentação. |
-| RF11 | Consultar Histórico por Medicamento | O sistema deve permitir consultar o histórico por medicamento. |
-| RF12 | Consultar Disponibilidade de Medicamentos | O sistema deve permitir consultar a disponibilidade de medicamentos. |
-| RF13 | Informar Falta de Medicamentos | O sistema deve informar quando um medicamento estiver em falta. |
-| RF14 | Consulta Prévia à Utilização | O sistema deve permitir que usuários consultem a disponibilidade antes do uso. |
-| RF15 | Interface Simples e de Fácil Uso | O sistema deve possuir interface simples e de fácil uso. |
-| RF16 | Navegação entre Funcionalidades | O sistema deve permitir navegação entre as funcionalidades principais. |
-| RF17 | Registro Rápido de Saídas | O sistema deve permitir registrar saídas de forma rápida. |
+| RF05 | Registrar Entradas e Saídas de Medicamentos | O sistema deve registrar entradas e saídas de medicamentos. |
+| RF06 | Atualizar Quantidade em Estoque | O sistema deve atualizar automaticamente a quantidade em estoque. |
+| RF07 | Consultar Quantidade Disponível | O sistema deve permitir consultar a quantidade disponível. |
+| RF08 | Cadastrar Usuários | O sistema deve permitir o cadastro de usuários. |
+| RF09 | Autenticar Usuários | O sistema deve permitir autenticação (login) de usuários. |
+| RF10 | Gerenciar Perfis de Acesso | O sistema deve diferenciar níveis de acesso conforme o perfil do usuário. |
 
 ### 3.3.2 Requisitos Não Funcionais
 
