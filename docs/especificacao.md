@@ -94,11 +94,12 @@ Integração com sistemas hospitalares externos
 | RNF12 | Padrões de Código | O sistema deve ser desenvolvido seguindo o Airbnb JavaScript Style Guide para o frontend.<br>A arquitetura do backend deve adotar separação em camadas (Apresentação, Serviço e Repositório).<br>O versionamento deve seguir o padrão Conventional Commits e Git Flow. |
 ### 3.3.3 Usuários 
 
-| Ator | Descrição |
-|--------------------|------------------------------------|
-| Coordenador |	Usuário gerente do sistema responsável pelo cadastro e manutenção de cursos de aperfeiçoamento. Possui acesso geral ao sistema. |
-| Secretaria |	Usuário responsável por registros de alunos, professores, turmas e gerência de matrículas. |
-| ... |	... |	... |
+| Ator               | Descrição                                                                                                           |
+|--------------------|-------------------------------------------------------------------------------------------------------------------|
+| Gestor/Coordenador | Usuário com visão gerencial, responsável por gerar relatórios de auditoria, monitorar o uso do sistema e supervisionar as operações gerais do estoque. |
+| Farmacêutico       | Responsável principal pelo gerenciamento de medicamentos, incluindo cadastro, atualização, remoção e registro de entradas no estoque.                  |
+| Enfermeiro/Técnico | Usuário que realiza a saída de medicamentos do estoque para administração aos pacientes e pode consultar a disponibilidade.                             |
+| Auxiliar de Farmácia | Auxilia nas operações de saída de medicamentos do estoque, sob supervisão do farmacêutico.                                                           |
 
 ## 3.4 Modelagem do Sistema
 
