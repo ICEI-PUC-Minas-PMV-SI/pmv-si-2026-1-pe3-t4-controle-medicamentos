@@ -1,0 +1,109 @@
+{
+    "_meta": {
+      "versao": "1.0.3",
+      "descricao": "Seed de dados do SCMU. Edite este arquivo para alterar o estado inicial. Alteracoes feitas pela interface sao salvas no localStorage do navegador e nao modificam este arquivo. Use o botao Exportar JSON para baixar o estado atual, ou Resetar para voltar a este seed.",
+      "nextIds": {
+        "medicamento": 6,
+        "lote": 10,
+        "movimentacao": 7,
+        "usuario": 4
+      }
+    },
+    "medicamentos": [
+      {
+        "id": 1,
+        "nome": "Amoxicilina 500mg",
+        "categoria": "Antibiótico",
+        "apresentacao": "Cápsulas - 30 unidades/caixa",
+        "unidade": "unidades",
+        "lotes": [
+          { "id": 1, "medicamentoId": 1, "codigo": "LOT-AX9022", "validade": "2027-10-24", "quantidade": 390, "critico": false },
+          { "id": 2, "medicamentoId": 1, "codigo": "LOT-AX9055", "validade": "2029-04-10", "quantidade": 600, "critico": false }
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Insulina Glargina",
+        "categoria": "Hormonal",
+        "apresentacao": "Injetável - Frasco-ampola 10ml",
+        "unidade": "frascos",
+        "lotes": [
+          { "id": 3, "medicamentoId": 2, "codigo": "LOT-IG8831", "validade": "2027-05-12", "quantidade": 3, "critico": true }
+        ]
+      },
+      {
+        "id": 3,
+        "nome": "Paracetamol 750mg",
+        "categoria": "Analgésico",
+        "apresentacao": "Comprimidos - 20 unidades/cartela",
+        "unidade": "comprimidos",
+        "lotes": [
+          { "id": 4, "medicamentoId": 3, "codigo": "LOT-PC5560", "validade": "2026-01-05", "quantidade": 950, "critico": false }
+        ]
+      },
+      {
+        "id": 4,
+        "nome": "Atorvastatina 20mg",
+        "categoria": "Antilipêmico",
+        "apresentacao": "Comprimidos - 28 unidades/caixa",
+        "unidade": "comprimidos",
+        "lotes": [
+          { "id": 5, "medicamentoId": 4, "codigo": "LOT-AT3310", "validade": "2026-09-30", "quantidade": 4, "critico": false }
+        ]
+      },
+      {
+        "id": 5,
+        "nome": "Epinefrina 1mg/mL",
+        "categoria": "Emergência",
+        "apresentacao": "Injetável - Ampola 1ml",
+        "unidade": "ampolas",
+        "lotes": [
+          { "id": 6, "medicamentoId": 5, "codigo": "LOT-EP0012", "validade": "2026-08-30", "quantidade": 25, "critico": true }
+        ]
+      }
+    ],
+    "movimentacoes": [
+      { "id": 1, "medId": 1, "loteId": 1, "tipo": "entry", "quantidade": 500, "responsavel": "Dra. Elena Fisher",   "data": "2025-10-24", "hora": "14:22" },
+      { "id": 2, "medId": 2, "loteId": 3, "tipo": "exit",  "quantidade": 12,  "responsavel": "Markus Vance",        "data": "2025-10-24", "hora": "13:05" },
+      { "id": 3, "medId": 3, "loteId": 4, "tipo": "exit",  "quantidade": 150, "responsavel": "Dr. Carlos Andrade",  "data": "2025-10-24", "hora": "11:40" },
+      { "id": 4, "medId": 5, "loteId": 6, "tipo": "entry", "quantidade": 25,  "responsavel": "Dra. Elena Fisher",   "data": "2025-10-24", "hora": "09:15" },
+      { "id": 5, "medId": 4, "loteId": 5, "tipo": "exit",  "quantidade": 28,  "responsavel": "Dr. Carlos Andrade",  "data": "2025-10-23", "hora": "16:50" },
+      { "id": 6, "medId": 1, "loteId": 2, "tipo": "entry", "quantidade": 600, "responsavel": "Markus Vance",        "data": "2025-10-22", "hora": "10:00" }
+    ],
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "Dra. Anaíza Domingues ",
+        "dept": "Administração",
+        "email": "admin@scmu.org",
+        "senha": "123456",
+        "cargo": "Administrador",
+        "destino": "medicamentos.html",
+        "role": "admin",
+        "status": "active"
+      },
+      {
+        "id": 2,
+        "nome": "Dra. Juliana Campos",
+        "dept": "Farmácia",
+        "email": "farmacia@scmu.org",
+        "senha": "123456",
+        "cargo": "Farmacêutica-Chefe",
+        "destino": "medicamentos.html",
+        "role": "pharmacist",
+        "status": "active"
+      },
+      {
+        "id": 3,
+        "nome": "Fernanda Finzer",
+        "dept": "Farmácia",
+        "email": "usuarios@scmu.org",
+        "senha": "123456",
+        "cargo": "Farmacêutico",
+        "destino": "usuarios.html",
+        "role": "pharmacist",
+        "status": "active"
+      }
+    ]
+  }
+  
