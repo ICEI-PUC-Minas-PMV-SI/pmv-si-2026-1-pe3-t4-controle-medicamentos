@@ -1,0 +1,20 @@
+.success-box {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+}
+.success-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(46, 160, 67, 0.1);
+    color: #2ea043;
+    display: flex; align-items: center; justify-content: center;
+}
+.success-icon .material-symbols-outlined { font-size: 28px; }
+.success-text {
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    line-height: 1.5;
+}

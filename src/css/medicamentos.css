@@ -1,0 +1,37 @@
+.lotes-count {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-container);
+    padding: 2px 7px;
+    border-radius: 999px;
+    vertical-align: middle;
+}
+.med-name {
+    font-weight: 600;
+    color: var(--on-surface);
+    display: block;
+}
+
+.med-sub {
+    font-size: 12px;
+    color: var(--on-surface-variant);
+    display: block;
+    margin-top: 2px;
+}
+
+.batch-code {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--on-surface-variant);
+}
+
+.qty { font-weight: 600; }
+.qty.danger { color: var(--error); }
+
+.expiring-date {
+    color: var(--error);
+    font-weight: 500;
+}
