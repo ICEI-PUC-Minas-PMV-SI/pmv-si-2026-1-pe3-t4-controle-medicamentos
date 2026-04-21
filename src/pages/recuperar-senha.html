@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCMU — Recuperação de Senha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/login.css"/>
+  <link rel="stylesheet" href="../css/recuperar-senha.css"/>
+</head>
+<body>
+
+<main class="login-page">
+
+  <div class="bg-blob bg-blob-1"></div>
+  <div class="bg-blob bg-blob-2"></div>
+
+  <div class="login-canvas">
+
+
+    <div class="brand">
+      <div class="brand-icon">
+        <span class="material-symbols-outlined">clinical_notes</span>
+      </div>
+      <div class="brand-name">SCMU</div>
+      <div class="brand-tagline">Hospital Universitário PUC-MG</div>
+    </div>
+
+
+    <div class="login-card">
+
+      <div id="form-container">
+        <div class="card-heading">
+          <h2 class="card-title">Recuperar Senha</h2>
+          <p class="card-subtitle">
+            Insira o seu e-mail cadastrado e enviaremos instruções para redefinir sua senha.
+          </p>
+        </div>
+
+        <form class="form" id="recover-form" novalidate>
+          <!-- Campo e-mail -->
+          <div class="field">
+            <div class="field-header">
+              <label class="field-label" for="email">E-mail</label>
+            </div>
+            <div class="input-wrap">
+              <span class="material-symbols-outlined input-icon">alternate_email</span>
+              <input
+                      class="form-input"
+                      id="email"
+                      type="email"
+                      placeholder="exemplo@email.com"
+                      autocomplete="email"
+              />
+            </div>
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <!-- Botão de acesso -->
+          <button class="btn-signin" id="btn-submit" type="submit">
+            <div class="spinner"></div>
+            <span class="btn-label">Enviar instruções</span>
+          </button>
+        </form>
+
+        <div style="text-align:center; margin-top:24px;">
+          <a class="forgot-link" href="login.html" style="font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+            Voltar ao Login
+          </a>
+        </div>
+      </div>
+
+
+      <div class="success-box" id="success-container">
+        <div class="success-icon">
+          <span class="material-symbols-outlined">check_circle</span>
+        </div>
+        <h2 class="card-title">E-mail Enviado</h2>
+        <p class="success-text">
+          Um link de recuperação de senha foi enviado para <strong id="success-email"></strong>. Por favor, verifique sua caixa de entrada e também a pasta de spam.
+        </p>
+        <a class="btn-signin" href="login.html" style="text-decoration: none; margin-top: 16px;">
+          Voltar ao Login
+        </a>
+      </div>
+
+
+      <div class="card-footer">
+        <span class="material-symbols-outlined">verified_user</span>
+        <span class="card-footer-text">Somente pessoal clínico autorizado</span>
+      </div>
+
+    </div>
+
+
+    <div class="global-links">
+      <a href="politica-privacidade.html">Política de Privacidade</a>
+      <a href="#">Suporte</a>
+      <a href="#">Status do Sistema</a>
+    </div>
+
+  </div>
+
+
+  <img
+          class="deco-image"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAI_1_SJGTPaoUtt3h0COZobVqoR5NI6_25MNVyUYBqg_lx46FwoMp8fJZm2Kz9nhOfT-X_NCTR_aE7C198KodKSyS4GD3ZnlHTq6ZXkK2MJypUZzymOmn6dAJEqOQGskzSdWrTix4TIz6u-3c5040rV3DZAnI8INGWRKmE-OSsOT74h4SbfDkvXZp4ZTRGE1GTpMZow8mQZIzTmsm0ta_9QDRo_t6VvieNuM4elOPYsilZ8dWdyjxCfQxaDYTKSvPQDCKqt2eEeg"
+          alt="Hospital Universitário PUC-MG"
+  />
+
+</main>
+
+<script src="../js/recuperar-senha.js"></script>
+</body>
+</html>

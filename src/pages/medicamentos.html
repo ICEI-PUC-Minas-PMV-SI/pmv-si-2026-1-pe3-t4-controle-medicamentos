@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registro de Medicamentos - SCMU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/medicamentos.css"/>
+</head>
+<body>
+
+<aside>
+    <div class="sidebar-brand">
+        <div class="brand-icon">
+            <span class="material-symbols-outlined">clinical_notes</span>
+        </div>
+        <div>
+            <div class="brand-title">SCMU</div>
+            <div class="brand-subtitle">Hospital Universitário PUC-MG</div>
+        </div>
+    </div>
+    <nav>
+        <a href="medicamentos.html" class="active">
+            <span class="material-symbols-outlined">medication</span>
+            Registro de Medicamentos
+        </a>
+        <a href="estoque.html">
+            <span class="material-symbols-outlined">inventory_2</span>
+            Controle de Estoque
+        </a>
+        <a href="relatorios.html">
+            <span class="material-symbols-outlined">analytics</span>
+            Relatórios
+        </a>
+        <a href="usuarios.html">
+            <span class="material-symbols-outlined">manage_accounts</span>
+            Gestão de Usuários
+        </a>
+    </nav>
+    <div class="sidebar-footer">
+        <a href="javascript:void(0)" onclick="SCMUDB.exportData()" title="Baixar estado atual como db.json">
+            <span class="material-symbols-outlined">download</span>
+            Exportar
+        </a>
+        <a href="javascript:void(0)" onclick="if(confirm('Resetar todos os dados para o estado inicial?')){SCMUDB.resetData().then(()=>location.reload())}" title="Apagar alterações e voltar ao seed" style="color: var(--error);">
+            <span class="material-symbols-outlined">restart_alt</span>
+            Resetar
+        </a>
+    </div>
+</aside>
+
+<main>
+    <header>
+        <div class="header-search">
+            <button class="mobile-menu-btn" onclick="document.querySelector('aside').classList.toggle('active-mobile')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <span class="material-symbols-outlined" style="color:var(--outline);">search</span>
+            <input type="text" id="search-input" placeholder="Buscar medicamentos..."/>
+        </div>
+        <div class="header-right">
+            <div class="header-actions">
+                <button class="icon-btn" type="button" aria-label="Abrir notificações" aria-expanded="false" data-notification-toggle>
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+            </div>
+            <div class="divider"></div>
+            <div class="user-block">
+                <div class="user-info">
+                    <div class="user-name"></div>
+                    <div class="user-role"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="canvas">
+
+        <div class="page-header">
+            <div>
+                <h2 class="page-title">Registro de Medicamentos</h2>
+                <p class="page-subtitle">Gerencie e monitore os níveis de estoque farmacêutico entre os departamentos clínicos.</p>
+            </div>
+            <button class="btn-primary" id="openModal">
+                <span class="material-symbols-outlined">add</span>
+                Adicionar Medicamento
+            </button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue"><span class="material-symbols-outlined">inventory</span></div>
+                <div>
+                    <div class="stat-label">Total de Itens</div>
+                    <div class="stat-value" id="stat-total">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon red"><span class="material-symbols-outlined">warning</span></div>
+                <div>
+                    <div class="stat-label">Vencendo em Breve</div>
+                    <div class="stat-value" id="stat-expiring">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple"><span class="material-symbols-outlined">sync</span></div>
+                <div>
+                    <div class="stat-label">Alerta de Estoque Baixo</div>
+                    <div class="stat-value" id="stat-low">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-card-header">
+                <span class="table-card-title">Lista de Inventário</span>
+                <div class="table-card-actions">
+                    <button class="btn-tbl"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;">filter_list</span></button>
+                    <button class="btn-tbl"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;">download</span></button>
+                </div>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nome do Medicamento</th>
+                        <th>Lote</th>
+                        <th>Validade</th>
+                        <th class="right">Quantidade</th>
+                        <th>Status</th>
+                        <th class="center">Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+
+            <div class="table-footer">
+                <span id="tbl-info">Exibindo 0 resultados</span>
+                <div class="pagination">
+                    <button class="page-btn" disabled>
+                        <span class="material-symbols-outlined" style="font-size:18px;">chevron_left</span> Anterior
+                    </button>
+                    <button class="page-btn">
+                        Próximo <span class="material-symbols-outlined" style="font-size:18px;">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<div class="modal-overlay" id="modal">
+    <div class="modal">
+        <div class="modal-head">
+            <h3 id="modal-title">Adicionar Medicamento</h3>
+            <button class="icon-btn" id="closeModal">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label class="field-label">Nome do Medicamento</label>
+                <input class="form-input" id="f-nome" type="text" placeholder="Ex.: Ibuprofeno 400mg"/>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="field-label">Categoria</label>
+                    <div class="select-wrap">
+                        <select class="form-select" id="f-cat">
+                            <option value="" disabled selected>Categoria</option>
+                            <option value="Analgésico">Analgésico</option>
+                            <option value="Antiácido">Antiácido</option>
+                            <option value="Antialérgico">Antialérgico</option>
+                            <option value="Antiarrítmico">Antiarrítmico</option>
+                            <option value="Antibiótico">Antibiótico</option>
+                            <option value="Anticoagulante">Anticoagulante</option>
+                            <option value="Anticonvulsivante">Anticonvulsivante</option>
+                            <option value="Antidepressivo">Antidepressivo</option>
+                            <option value="Antidiabético">Antidiabético</option>
+                            <option value="Antiemético">Antiemético</option>
+                            <option value="Anti-hipertensivo">Anti-hipertensivo</option>
+                            <option value="Anti-inflamatório">Anti-inflamatório</option>
+                            <option value="Antilipêmico">Antilipêmico</option>
+                            <option value="Antitérmico">Antitérmico</option>
+                            <option value="Corticosteroide">Corticosteroide</option>
+                            <option value="Diurético">Diurético</option>
+                            <option value="Hormonal">Hormonal</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="field-label">Unidade</label>
+                    <div class="select-wrap">
+                        <select class="form-select" id="f-unidade">
+                            <option value="ampolas">Ampolas</option>
+                            <option value="cápsulas">Cápsulas</option>
+                            <option value="comprimidos">Comprimidos</option>
+                            <option value="frascos">Frascos</option>
+                            <option value="sachês">Sachês</option>
+                            <option value="unidades">Unidades</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="field-label">Apresentação</label>
+                <input class="form-input" id="f-apres" type="text" placeholder="Ex.: Comprimidos • 20 unidades/cartela"/>
+            </div>
+
+            <div id="lote-section" style="display:flex; flex-direction:column; gap:16px; padding-top:4px; border-top:1px solid var(--outline-variant); margin-top:4px;">
+                <p style="font-size:11px; font-weight:700; color:var(--on-surface-variant); text-transform:uppercase; letter-spacing:0.1em; margin-top:8px;">Lote inicial</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="field-label">Código do Lote</label>
+                        <input class="form-input" id="f-lote-codigo" type="text" placeholder="LOT-000000"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="field-label">Validade</label>
+                        <input class="form-input" id="f-lote-val" type="date"/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="field-label">Quantidade</label>
+                        <input class="form-input" id="f-lote-qtd" type="number" placeholder="0" min="0"/>
+                    </div>
+                    <div class="form-group" style="flex-direction:row; align-items:center; gap:10px; padding-top:24px;">
+                        <input type="checkbox" id="f-lote-critico" style="width:16px;height:16px;accent-color:var(--error);cursor:pointer;"/>
+                        <label for="f-lote-critico" style="font-size:13px;color:var(--on-surface-variant);cursor:pointer;">
+                            Lote <strong style="color:var(--error);">crítico</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <p class="form-error" id="form-error">Preencha todos os campos obrigatórios.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="cancelModal">Cancelar</button>
+                <button class="btn-submit" id="submitModal">Registrar Medicamento</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-delete">
+    <div class="modal confirm">
+        <div class="confirm-body">
+            <div class="confirm-icon" style="width:64px;height:64px;">
+                <span class="material-symbols-outlined" style="font-size:34px;">delete_forever</span>
+            </div>
+            <div class="confirm-title">Remover Medicamento</div>
+            <p class="confirm-text" id="delete-confirm-text">
+                Tem certeza que deseja remover este medicamento e todos os seus lotes? Esta ação não pode ser desfeita.
+            </p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" id="btn-cancel-delete">Cancelar</button>
+                <button class="btn-danger" id="btn-confirm-delete">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/db.js"></script>
+<script src="../js/medicamentos.js"></script>
+</body>
+</html>
