@@ -13,7 +13,7 @@ function calculateBatchStatus(batch) {
     if (batch.quantidade <= 10) return 'low-stock';
     if (dayDifference <= 90) return 'expiring';
     return 'in-stock';
-}
+} //todo: implementar uma regra melhor. Definir uma porcentagem para  'low-stock' e quantidade de dias para 'expiring'
 
 function calculateMedicineStatus(medicine) {
     if (medicine.lotes.length === 0) return 'low-stock';
@@ -40,6 +40,7 @@ function renderTable(list) {
         const status = calculateMedicineStatus(medicine);
         const isExpiring = status === 'expiring';
         const isLowStock = status === 'low-stock';
+        const isExpired  = status === 'expired';
         const totalQuantity = SCMUDB.medicine.totalStock(medicine.id);
         const nearestBatch = SCMUDB.medicine.getNearestBatch(medicine.id);
         const batchCode = nearestBatch ? nearestBatch.codigo : '—';
@@ -59,7 +60,7 @@ function renderTable(list) {
       </td>
       <td class="${isExpiring ? 'expiring-date' : ''}">${Fmt.date(expirationDate)}</td>
       <td class="right">
-        <span class="qty ${isLowStock ? 'danger' : ''}">${totalQuantity.toLocaleString('pt-BR')} ${medicine.unidade}</span>
+        <span class="qty ${(isLowStock || isExpired) ? 'danger' : ''}">${totalQuantity.toLocaleString('pt-BR')} ${medicine.unidade}</span>
       </td>
       <td><span class="badge ${status}">${STATUS_LABEL[status]}</span></td>
       <td class="center">
