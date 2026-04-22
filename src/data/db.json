@@ -63,17 +63,17 @@
       }
     ],
     "movimentacoes": [
-      { "id": 1, "medId": 1, "loteId": 1, "tipo": "entry", "quantidade": 500, "responsavel": "Dra. Elena Fisher",   "data": "2025-10-24", "hora": "14:22" },
-      { "id": 2, "medId": 2, "loteId": 3, "tipo": "exit",  "quantidade": 12,  "responsavel": "Markus Vance",        "data": "2025-10-24", "hora": "13:05" },
-      { "id": 3, "medId": 3, "loteId": 4, "tipo": "exit",  "quantidade": 150, "responsavel": "Dr. Carlos Andrade",  "data": "2025-10-24", "hora": "11:40" },
-      { "id": 4, "medId": 5, "loteId": 6, "tipo": "entry", "quantidade": 25,  "responsavel": "Dra. Elena Fisher",   "data": "2025-10-24", "hora": "09:15" },
+      { "id": 1, "medId": 1, "loteId": 1, "tipo": "entry", "quantidade": 500, "responsavel": "Dra. Anaíza Domingues",   "data": "2025-10-24", "hora": "14:22" },
+      { "id": 2, "medId": 2, "loteId": 3, "tipo": "exit",  "quantidade": 12,  "responsavel": "Dra. Juliana Campos",        "data": "2025-10-24", "hora": "13:05" },
+      { "id": 3, "medId": 3, "loteId": 4, "tipo": "exit",  "quantidade": 150, "responsavel": "Fernanda Finzer",  "data": "2025-10-24", "hora": "11:40" },
+      { "id": 4, "medId": 5, "loteId": 6, "tipo": "entry", "quantidade": 25,  "responsavel": "Dra. Anaíza Domingues",   "data": "2025-10-24", "hora": "09:15" },
       { "id": 5, "medId": 4, "loteId": 5, "tipo": "exit",  "quantidade": 28,  "responsavel": "Dr. Carlos Andrade",  "data": "2025-10-23", "hora": "16:50" },
-      { "id": 6, "medId": 1, "loteId": 2, "tipo": "entry", "quantidade": 600, "responsavel": "Markus Vance",        "data": "2025-10-22", "hora": "10:00" }
+      { "id": 6, "medId": 1, "loteId": 2, "tipo": "entry", "quantidade": 600, "responsavel": "Dra. Juliana Campos",        "data": "2025-10-22", "hora": "10:00" }
     ],
     "usuarios": [
       {
         "id": 1,
-        "nome": "Dra. Anaíza Domingues ",
+        "nome": "Dra. Anaíza Domingues",
         "dept": "Administração",
         "email": "admin@scmu.org",
         "senha": "123456",
