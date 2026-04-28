@@ -3,8 +3,279 @@
 ## 4.1 Personas
 Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar uma persona por integrante do projeto. Para mais informações sobre personas consulte: https://www.rdstation.com/blog/marketing/persona-o-que-e/. Sugere-se a utilização de um template do Canva: https://www.canva.com/pt_br/modelos/s/persona/
 
-## 4.2 Mapa de Empatia
-Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
+# 4.2 Mapa de Empatia
+
+O **Mapa de Empatia** é uma ferramenta utilizada para aprofundar o entendimento sobre os usuários do sistema, permitindo identificar pensamentos, comportamentos, dores e necessidades.
+
+No contexto do projeto **Sistema de Controle de Estoque de Medicamentos em Unidades de Saúde**, o mapa auxilia na compreensão dos profissionais que lidam diariamente com medicamentos, estoque, atendimento e gestão.
+
+A seguir, são apresentados os mapas de empatia desenvolvidos com base nas personas identificadas no projeto.
+
+---
+
+# Persona 1 — Ana Paula
+
+**Idade:** 38 anos
+**Profissão:** Farmacêutica Responsável
+**Contexto:** Responsável pelo controle geral do estoque de medicamentos em uma unidade de saúde.
+
+## O que pensa e sente?
+
+* Preocupa-se constantemente com a falta de medicamentos.
+* Sente responsabilidade direta sobre perdas e vencimentos.
+* Acredita que o processo atual é pouco eficiente.
+* Deseja maior organização e segurança nas informações.
+* Busca reduzir erros humanos.
+
+## O que vê?
+
+* Uso excessivo de planilhas e registros manuais.
+* Grande volume de medicamentos para controlar.
+* Falta de integração entre setores.
+* Dificuldade em localizar informações rapidamente.
+* Processos lentos e repetitivos.
+
+## O que ouve?
+
+* Cobranças da gestão sobre controle de estoque.
+* Reclamações sobre medicamentos indisponíveis.
+* Solicitações constantes da enfermagem.
+* Orientações administrativas sobre redução de desperdícios.
+
+## O que fala e faz?
+
+* Confere entradas e saídas frequentemente.
+* Atualiza registros manualmente.
+* Produz relatórios para a gestão.
+* Tenta evitar perdas por vencimento.
+* Organiza o armazenamento dos medicamentos.
+
+## Quais são as dores?
+
+* Falta de rastreabilidade.
+* Processos manuais demorados.
+* Possibilidade de erro humano.
+* Dificuldade em acompanhar validade e quantidade.
+* Sobrecarga operacional.
+
+## Quais são as necessidades?
+
+* Controle automatizado.
+* Alertas de vencimento.
+* Relatórios rápidos.
+* Consulta em tempo real.
+* Melhor organização do estoque.
+
+---
+
+# Persona 2 — Carlos
+
+**Idade:** 26 anos
+**Profissão:** Auxiliar de Farmácia
+**Contexto:** Responsável por registrar movimentações de medicamentos.
+
+## O que pensa e sente?
+
+* Quer executar suas tarefas rapidamente.
+* Sente dificuldade com sistemas complexos.
+* Deseja evitar erros nos registros.
+* Precisa de orientações claras.
+
+## O que vê?
+
+* Alto fluxo de movimentação.
+* Muitos registros repetitivos.
+* Falta de padronização.
+* Dependência de anotações manuais.
+
+## O que ouve?
+
+* Orientações da farmacêutica responsável.
+* Solicitações da equipe de enfermagem.
+* Cobranças por agilidade.
+* Alertas sobre erros de registro.
+
+## O que fala e faz?
+
+* Registra entradas e saídas.
+* Consulta estoque constantemente.
+* Atualiza informações diariamente.
+* Busca praticidade nas tarefas.
+
+## Quais são as dores?
+
+* Sistemas difíceis de usar.
+* Erros de digitação.
+* Falta de rapidez no cadastro.
+* Retrabalho.
+
+## Quais são as necessidades?
+
+* Interface simples.
+* Cadastro rápido.
+* Facilidade de navegação.
+* Processo intuitivo.
+
+---
+
+# Persona 3 — Juliana
+
+**Idade:** 32 anos
+**Profissão:** Enfermeira
+**Contexto:** Atua diretamente no atendimento e administração de medicamentos.
+
+## O que pensa e sente?
+
+* Precisa garantir atendimento rápido ao paciente.
+* Sente frustração quando o medicamento não está disponível.
+* Valoriza praticidade e rapidez.
+* Quer segurança nas informações.
+
+## O que vê?
+
+* Alta demanda de pacientes.
+* Pressão por agilidade.
+* Falta de visibilidade sobre estoque.
+* Dependência da farmácia para confirmação.
+
+## O que ouve?
+
+* Solicitações médicas.
+* Demandas urgentes.
+* Reclamações de pacientes.
+* Informações sobre indisponibilidade.
+
+## O que fala e faz?
+
+* Solicita medicamentos frequentemente.
+* Consulta disponibilidade.
+* Administra medicamentos.
+* Trabalha sob pressão.
+
+## Quais são as dores?
+
+* Falta de informação rápida.
+* Demora para localizar medicamentos.
+* Atrasos no atendimento.
+* Comunicação ineficiente.
+
+## Quais são as necessidades?
+
+* Consulta rápida de estoque.
+* Informações confiáveis.
+* Facilidade para registrar retiradas.
+* Comunicação eficiente com farmácia.
+
+---
+
+# Persona 4 — Ricardo
+
+**Idade:** 45 anos
+**Profissão:** Médico Clínico Geral
+**Contexto:** Prescreve medicamentos conforme disponibilidade da unidade.
+
+## O que pensa e sente?
+
+* Deseja prescrever com segurança.
+* Frustra-se ao descobrir indisponibilidade.
+* Busca praticidade durante consultas.
+* Precisa de informações rápidas.
+
+## O que vê?
+
+* Rotina intensa de atendimentos.
+* Limitações de estoque.
+* Falta de integração entre consulta e farmácia.
+* Necessidade de decisões rápidas.
+
+## O que ouve?
+
+* Relatos de falta de medicamentos.
+* Informações da enfermagem.
+* Solicitações dos pacientes.
+* Atualizações sobre estoque.
+
+## O que fala e faz?
+
+* Prescreve medicamentos diariamente.
+* Consulta opções disponíveis.
+* Ajusta prescrições quando necessário.
+* Busca eficiência no atendimento.
+
+## Quais são as dores?
+
+* Retrabalho por indisponibilidade.
+* Falta de informação rápida.
+* Tempo perdido em confirmação.
+* Impacto na consulta.
+
+## Quais são as necessidades?
+
+* Consulta rápida de disponibilidade.
+* Integração com estoque.
+* Apoio à prescrição.
+* Redução de retrabalho.
+
+---
+
+# Persona 5 — Fernanda
+
+**Idade:** 41 anos
+**Profissão:** Gestora da Unidade
+**Contexto:** Responsável pelo planejamento e supervisão dos recursos.
+
+## O que pensa e sente?
+
+* Busca eficiência administrativa.
+* Preocupa-se com desperdício.
+* Precisa de dados confiáveis.
+* Quer melhorar a tomada de decisão.
+
+## O que vê?
+
+* Falta de padronização.
+* Relatórios incompletos.
+* Problemas de controle.
+* Processos descentralizados.
+
+## O que ouve?
+
+* Reclamações da equipe.
+* Demandas administrativas.
+* Necessidade de auditoria.
+* Problemas recorrentes no estoque.
+
+## O que fala e faz?
+
+* Analisa indicadores.
+* Planeja compras.
+* Supervisiona processos.
+* Busca melhoria contínua.
+
+## Quais são as dores?
+
+* Falta de visão geral.
+* Dificuldade de auditoria.
+* Dados inconsistentes.
+* Controle descentralizado.
+
+## Quais são as necessidades?
+
+* Relatórios gerenciais.
+* Indicadores de consumo.
+* Controle centralizado.
+* Informações confiáveis.
+
+---
+
+# Considerações Finais
+
+A construção do Mapa de Empatia permitiu compreender de forma mais aprofundada os diferentes perfis envolvidos no processo de controle de medicamentos.
+
+Cada persona apresenta necessidades específicas, mas todas convergem para um objetivo comum: melhorar a eficiência, segurança e confiabilidade no gerenciamento de estoque.
+
+Com base nesses mapas, torna-se possível desenvolver um sistema mais alinhado às necessidades reais dos usuários, promovendo melhor usabilidade, organização e suporte à tomada de decisão dentro das unidades de saúde.
+
 
 ## 4.3 Protótipos das Interfaces
 Apresente nesta seção os protótipos de alta fidelidade do sistema proposto. A fidelidade do protótipo refere-se ao nível de detalhes e funcionalidades incorporadas a ele. Assim, um protótipo de alta fidelidade é uma representação interativa do produto, baseada no computador ou em dispositivos móveis. Esse protótipo já apresenta maior semelhança com o design final em termos de detalhes e funcionalidades. No desenvolvimento dos protótipos, devem ser considerados os princípios gestálticos, as recomendações ergonômicas e as regras de design (como as 8 regras de ouro). É importante descrever no texto do relatório como os princípios gestálticos e as regras de ouro foram seguidas no projeto das interfaces. Nesta etapa deve-se dar uma ênfase na implementação do software de modo que possam ser realizados os testes com usuários na etapa seguinte.
