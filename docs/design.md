@@ -1,7 +1,15 @@
 # 4. PROJETO DO DESIGN DE INTERAÇÃO
 
 ## 4.1 Personas
-Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar uma persona por integrante do projeto. Para mais informações sobre personas consulte: https://www.rdstation.com/blog/marketing/persona-o-que-e/. Sugere-se a utilização de um template do Canva: https://www.canva.com/pt_br/modelos/s/persona/
+[1] - Ana Paula, 38 anos, farmacêutica responsável por uma unidade de saúde, enfrenta dificuldades no controle de estoque de medicamentos devido ao uso de planilhas e registros manuais. No seu dia a dia, precisa garantir que não faltem medicamentos e evitar perdas. Ela busca uma forma mais eficiente de acompanhar entradas e saídas, além de precisar gerar relatórios para a gestão.
+
+[2] - Carlos, 26 anos, auxiliar de farmácia, é responsável por registrar a entrada e saída de medicamentos no estoque. Com pouca familiaridade com sistemas complexos, ele encontra dificuldades em manter os registros atualizados e evitar erros. Durante sua rotina, precisa de agilidade no atendimento e precisão nas informações. Por isso, busca uma ferramenta simples e intuitiva que facilite o cadastro e a movimentação dos medicamentos.
+
+[3] - Juliana, 32 anos, enfermeira, atua diretamente no atendimento aos pacientes e na administração de medicamentos. Em diversos momentos, já enfrentou situações em que o medicamento necessário não estava disponível, causando atrasos no atendimento. Para melhorar sua rotina, ela precisa consultar rapidamente a disponibilidade dos medicamentos e registrar retiradas de forma prática. Ela pretende utilizar o sistema para obter essas informações de maneira rápida e confiável.
+
+[4] - Ricardo, 45 anos, médico clínico geral, realiza atendimentos diários e precisa prescrever medicamentos de acordo com a disponibilidade da unidade. Em algumas situações, já prescreveu medicamentos indisponíveis, gerando retrabalho. Para evitar esse problema, ele deseja consultar rapidamente quais medicamentos estão disponíveis antes de finalizar a prescrição. Ele pretende utilizar o sistema como apoio durante as consultas.
+
+[5] - Fernanda, 41 anos, gestora da unidade de saúde, é responsável pelo planejamento e controle dos recursos, incluindo a compra de medicamentos. Ela enfrenta dificuldades em obter dados confiáveis sobre o estoque e as movimentações, o que impacta a tomada de decisões. Para melhorar a gestão, precisa de uma visão geral do estoque, relatórios e informações sobre consumo e vencimentos. Para isso, pretende utilizar o sistema como ferramenta de apoio à gestão e auditoria.
 
 # 4.2 Mapa de Empatia
 
