@@ -3,7 +3,7 @@ if (!Auth.guard()) throw new Error('Sessão inválida');
 Auth.populateHeader();
 
 
-const TODAY = (() => { const date = new Date(); date.setHours(0,0,0,0); return date; })();
+const TODAY = DateUtil.today();
 
 function calculateBatchStatus(batch) {
     const expirationDate = new Date(batch.validade + 'T00:00:00');
