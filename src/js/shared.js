@@ -49,8 +49,7 @@
       return true;
     }
   }
-  
- 
+
   const Auth = {
     COOKIE_NAME: 'scmu_session',
     EXPIRES_MIN: 5,
@@ -155,6 +154,18 @@
         .map(part => part[0])
         .join('')
         .toUpperCase();
+    },
+  };
+
+  const DateUtil = {
+    startOfDay(date = new Date()) {
+      const d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+      return d;
+    },
+
+    today() {
+      return this.startOfDay(new Date());
     },
   };
 
