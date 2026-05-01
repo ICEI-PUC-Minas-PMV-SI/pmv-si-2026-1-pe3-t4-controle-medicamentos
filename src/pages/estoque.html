@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Controle de Estoque - SCMU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/base.css"/>
+  <link rel="stylesheet" href="../css/estoque.css"/>
+</head>
+<body>
+
+<aside>
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <span class="material-symbols-outlined">clinical_notes</span>
+    </div>
+    <div>
+      <div class="brand-title">SCMU</div>
+      <div class="brand-subtitle">Hospital Universitário PUC-MG</div>
+    </div>
+  </div>
+  <nav>
+    <a href="medicamentos.html">
+      <span class="material-symbols-outlined">medication</span>
+      Registro de Medicamentos
+    </a>
+    <a href="estoque.html" class="active">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">inventory_2</span>
+      Controle de Estoque
+    </a>
+    <a href="relatorios.html">
+      <span class="material-symbols-outlined">analytics</span>
+      Relatórios
+    </a>
+    <a href="usuarios.html">
+      <span class="material-symbols-outlined">manage_accounts</span>
+      Gestão de Usuários
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="javascript:void(0)" onclick="SCMUDB.exportData()" title="Baixar estado atual como db.json">
+      <span class="material-symbols-outlined">download</span>
+      Exportar
+    </a>
+    <a href="javascript:void(0)" onclick="if(confirm('Resetar todos os dados para o estado inicial?')){SCMUDB.resetData().then(()=>location.reload())}" title="Apagar alterações e voltar ao seed" style="color: var(--error);">
+      <span class="material-symbols-outlined">restart_alt</span>
+      Resetar
+    </a>
+  </div>
+</aside>
+
+<main>
+
+  <header>
+    <div class="header-search">
+      <button class="mobile-menu-btn" onclick="document.querySelector('aside').classList.toggle('active-mobile')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="material-symbols-outlined" style="color:var(--outline);">search</span>
+      <input type="text" id="search-input" placeholder="Buscar inventário..." aria-label="Buscar inventário"/>
+    </div>
+    <div class="header-right">
+      <div class="header-actions">
+        <button class="icon-btn" type="button" aria-label="Abrir notificações" aria-expanded="false" data-notification-toggle>
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+      </div>
+      <div class="divider"></div>
+      <div class="user-block">
+        <div class="user-info">
+          <div class="user-name"></div>
+          <div class="user-role"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="canvas">
+
+    <div class="page-header">
+      <div>
+        <h2 class="page-title">Controle de Estoque</h2>
+        <p class="page-subtitle">Gerencie os níveis de inventário e acompanhe o histórico de movimentações</p>
+      </div>
+      <div class="page-actions">
+        <button class="btn-entry" id="btn-nova-entrada">
+          <span class="material-symbols-outlined">add_circle</span>
+          Registrar Entrada
+        </button>
+        <button class="btn-exit" id="btn-nova-saida">
+          <span class="material-symbols-outlined">remove_circle</span>
+          Registrar Saída
+        </button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card-wide">
+        <div class="stat-body">
+          <div class="stat-label">Total de Movimentações</div>
+          <div class="stat-value" id="stat-total">0</div>
+          <div class="stat-trend up">
+            <span class="material-symbols-outlined">trending_up</span>
+            +12% em relação ao mês anterior
+          </div>
+        </div>
+        <div class="stat-icon-box blue">
+          <span class="material-symbols-outlined">inventory</span>
+        </div>
+      </div>
+      <div class="stat-card-wide">
+        <div class="stat-body">
+          <div class="stat-label">Níveis Críticos</div>
+          <div class="stat-value" id="stat-criticos" style="color:var(--error);">0</div>
+          <div class="stat-trend down">
+            <span class="material-symbols-outlined">report_problem</span>
+            Ação necessária
+          </div>
+        </div>
+        <div class="stat-icon-box red">
+          <span class="material-symbols-outlined">warning</span>
+        </div>
+      </div>
+      <div class="stat-card-wide">
+        <div class="stat-body">
+          <div class="stat-label">Movimentações Hoje</div>
+          <div class="stat-value" id="stat-mov">0</div>
+          <div class="stat-trend neutral">
+            <span class="material-symbols-outlined">history</span>
+            Última: há 14 minutos
+          </div>
+        </div>
+        <div class="stat-icon-box gray">
+          <span class="material-symbols-outlined">history</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-card">
+
+      <div class="filters-bar">
+        <span class="table-card-title">Histórico de Movimentações</span>
+        <div class="filters-group">
+          <div class="filter-select-wrap">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <select class="filter-select" id="f-periodo" aria-label="Filtrar por período">
+              <option value="all">Todo o período</option>
+              <option value="7">Últimos 7 dias</option>
+              <option value="30">Últimos 30 dias</option>
+            </select>
+          </div>
+          <div class="filter-select-wrap">
+            <span class="material-symbols-outlined">filter_list</span>
+            <select class="filter-select" id="f-tipo" aria-label="Filtrar por tipo de movimentação">
+              <option value="all">Todas as movimentações</option>
+              <option value="entry">Somente Entradas</option>
+              <option value="exit">Somente Saídas</option>
+            </select>
+          </div>
+          <button class="btn-tbl">
+            <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;">download</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+          <tr>
+            <th>Data / Hora</th>
+            <th>Medicamento</th>
+            <th>Tipo</th>
+            <th class="right">Quantidade</th>
+            <th>Responsável</th>
+            <th class="center">Lote</th>
+            <th class="right">Ações</th>
+          </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+
+      <div class="table-footer">
+        <span id="tbl-info">Exibindo 0 resultados</span>
+        <div class="pagination">
+          <button class="page-btn" disabled>
+            <span class="material-symbols-outlined" style="font-size:18px;">chevron_left</span>
+            Anterior
+          </button>
+          <button class="page-btn current">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">
+            Próximo
+            <span class="material-symbols-outlined" style="font-size:18px;">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modal-mov">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-title">Registrar Entrada</h3>
+      <button class="icon-btn" id="btn-close">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-tipo-toggle">
+        <button class="tipo-btn active entry" data-tipo="entry">
+          <span class="material-symbols-outlined">add_circle</span>
+          Entrada
+        </button>
+        <button class="tipo-btn" data-tipo="exit">
+          <span class="material-symbols-outlined">remove_circle</span>
+          Saída
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="f-med">Medicamento</label>
+        <div class="select-wrap">
+          <select class="form-select" id="f-med">
+            <option value="">Selecione o medicamento…</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label" for="f-lote">Lote</label>
+        <div class="select-wrap">
+          <select class="form-select" id="f-lote" disabled>
+            <option value="">Selecione o lote…</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="field-label" for="f-qtd">Quantidade</label>
+          <input class="form-input" id="f-qtd" type="number" placeholder="0" min="1"/>
+        </div>
+        <div class="form-group">
+          <label class="field-label" for="f-resp">Responsável</label>
+          <input class="form-input" id="f-resp" type="text" placeholder="Nome do responsável"/>
+        </div>
+      </div>
+
+      <p class="form-error" id="form-error">Preencha todos os campos obrigatórios.</p>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btn-cancel">Cancelar</button>
+        <button class="btn-submit" id="btn-submit">Confirmar Entrada</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/db.js"></script>
+<script src="../js/estoque.js"></script>
+</body>
+</html>
