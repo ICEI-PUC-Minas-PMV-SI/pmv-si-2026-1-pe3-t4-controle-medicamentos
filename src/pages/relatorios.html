@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Relatórios de Auditoria - SCMU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/base.css"/>
+  <link rel="stylesheet" href="../css/relatorios.css"/>
+</head>
+<body>
+
+<!-- ── Sidebar ── -->
+<aside>
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <span class="material-symbols-outlined">clinical_notes</span>
+    </div>
+    <div>
+      <div class="brand-title">SCMU</div>
+      <div class="brand-subtitle">Hospital Universitário PUC-MG</div>
+    </div>
+  </div>
+  <nav>
+    <a href="medicamentos.html">
+      <span class="material-symbols-outlined">medication</span>
+      Registro de Medicamentos
+    </a>
+    <a href="estoque.html">
+      <span class="material-symbols-outlined">inventory_2</span>
+      Controle de Estoque
+    </a>
+    <a href="relatorios.html" class="active">
+      <span class="material-symbols-outlined">analytics</span>
+      Relatórios
+    </a>
+    <a href="usuarios.html">
+      <span class="material-symbols-outlined">manage_accounts</span>
+      Gestão de Usuários
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="javascript:void(0)" onclick="SCMUDB.exportData()" title="Baixar estado atual como db.json">
+      <span class="material-symbols-outlined">download</span>
+      Exportar
+    </a>
+    <a href="javascript:void(0)" onclick="if(confirm('Resetar todos os dados para o estado inicial?')){SCMUDB.resetData().then(()=>location.reload())}" title="Apagar alterações e voltar ao seed" style="color: var(--error);">
+      <span class="material-symbols-outlined">restart_alt</span>
+      Resetar
+    </a>
+  </div>
+</aside>
+
+<!-- ── Main ── -->
+<main>
+  <header>
+    <div class="header-search">
+      <button class="mobile-menu-btn" onclick="document.querySelector('aside').classList.toggle('active-mobile')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="material-symbols-outlined" style="color:var(--outline);">search</span>
+      <input type="text" id="search-input" placeholder="Buscar..." aria-label="Buscar no relatório"/>
+    </div>
+    <div class="header-right">
+      <div class="header-actions">
+        <button class="icon-btn" type="button" aria-label="Abrir notificações" aria-expanded="false" data-notification-toggle>
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+      </div>
+      <div class="divider"></div>
+      <div class="user-block">
+        <div class="user-info">
+          <div class="user-name"></div>
+          <div class="user-role"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="canvas">
+    <div class="page-header">
+      <div>
+        <h2 class="page-title">Relatórios de Auditoria</h2>
+        <p class="page-subtitle">Gere relatórios detalhados de movimentações, alertas e criticidade para análise e controle gerencial.</p>
+      </div>
+      <div class="page-actions">
+        <button class="btn-tbl" id="btn-export-csv" title="Exportar movimentações filtradas em CSV">
+          <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;">download</span>
+          Exportar CSV
+        </button>
+        <button class="btn-tbl" id="btn-export-json" title="Exportar movimentações filtradas em JSON">
+          <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;">data_object</span>
+          Exportar JSON
+        </button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon blue"><span class="material-symbols-outlined">history</span></div>
+        <div>
+          <div class="stat-label">Movimentações (filtrado)</div>
+          <div class="stat-value" id="stat-mov">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><span class="material-symbols-outlined">add_circle</span></div>
+        <div>
+          <div class="stat-label">Entradas / Saídas</div>
+          <div class="stat-value" id="stat-inout">0 / 0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon red"><span class="material-symbols-outlined">warning</span></div>
+        <div>
+          <div class="stat-label">Alertas (global)</div>
+          <div class="stat-value" id="stat-alerts">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movimentações -->
+    <div class="table-card">
+      <div class="filters-bar">
+        <div>
+          <span class="table-card-title">Movimentações</span>
+          <div class="filters-hint" id="filters-hint">Todo o período</div>
+        </div>
+
+        <div class="filters-group">
+          <div class="filter-select-wrap">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <select class="filter-select" id="f-periodo" aria-label="Filtrar por período">
+              <option value="all">Todo o período</option>
+              <option value="7">Últimos 7 dias</option>
+              <option value="30" selected>Últimos 30 dias</option>
+              <option value="90">Últimos 90 dias</option>
+              <option value="custom">Período personalizado</option>
+            </select>
+          </div>
+
+          <div class="filter-date-wrap" id="custom-range" hidden>
+            <input class="filter-date" id="f-de" type="date" aria-label="Data inicial"/>
+            <span class="filter-date-sep">até</span>
+            <input class="filter-date" id="f-ate" type="date" aria-label="Data final"/>
+          </div>
+
+          <div class="filter-select-wrap">
+            <span class="material-symbols-outlined">filter_list</span>
+            <select class="filter-select" id="f-tipo" aria-label="Filtrar por tipo de movimentação">
+              <option value="all">Todas</option>
+              <option value="entry">Somente entradas</option>
+              <option value="exit">Somente saídas</option>
+            </select>
+          </div>
+
+          <div class="filter-select-wrap">
+            <span class="material-symbols-outlined">person</span>
+            <select class="filter-select" id="f-usuario" aria-label="Filtrar por responsável">
+              <option value="all">Todos os usuários</option>
+            </select>
+          </div>
+
+          <div class="filter-select-wrap">
+            <span class="material-symbols-outlined">medication</span>
+            <select class="filter-select" id="f-med" aria-label="Filtrar por medicamento">
+              <option value="all">Todos os medicamentos</option>
+            </select>
+          </div>
+
+          <label class="filter-check" title="Exibir apenas movimentações de lotes críticos">
+            <input type="checkbox" id="f-only-critical"/>
+            Somente críticos
+          </label>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+          <tr>
+            <th>Data / Hora</th>
+            <th>Medicamento</th>
+            <th>Tipo</th>
+            <th class="right">Quantidade</th>
+            <th>Responsável</th>
+            <th class="center">Lote</th>
+          </tr>
+          </thead>
+          <tbody id="tbody-mov"></tbody>
+        </table>
+      </div>
+
+      <div class="table-footer">
+        <span id="tbl-info-mov">Exibindo 0 resultados</span>
+        <div class="pagination">
+          <button class="page-btn" disabled>Anterior</button>
+          <button class="page-btn current">1</button>
+          <button class="page-btn" disabled>Próximo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alertas / criticidade -->
+    <div class="table-card">
+      <div class="table-card-header">
+        <span class="table-card-title">Alertas e Criticidade</span>
+        <div class="table-card-actions">
+          <button class="btn-tbl" id="btn-export-alerts" title="Exportar alertas em CSV">
+            <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;">download</span>
+            Exportar alertas
+          </button>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+          <tr>
+            <th>Medicamento</th>
+            <th>Lote</th>
+            <th>Validade</th>
+            <th class="right">Quantidade</th>
+            <th>Status</th>
+            <th class="center">Crítico</th>
+          </tr>
+          </thead>
+          <tbody id="tbody-alerts"></tbody>
+        </table>
+      </div>
+
+      <div class="table-footer">
+        <span id="tbl-info-alerts">Exibindo 0 resultados</span>
+        <div class="pagination">
+          <button class="page-btn" disabled>Anterior</button>
+          <button class="page-btn current">1</button>
+          <button class="page-btn" disabled>Próximo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Hospital Universitário PUC-MG Management Unit</span>
+    <span>Ver. 1.0.0-prototype</span>
+  </footer>
+</main>
+
+<script src="../js/shared.js"></script>
+<script src="../js/db.js"></script>
+<script src="../js/relatorios.js"></script>
+</body>
+</html>
+
