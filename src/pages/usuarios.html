@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestão de Usuários - SCMU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/usuarios.css"/>
+</head>
+<body>
+
+<aside>
+    <div class="sidebar-brand">
+        <div class="brand-icon">
+            <span class="material-symbols-outlined">clinical_notes</span>
+        </div>
+        <div>
+            <div class="brand-title">SCMU</div>
+            <div class="brand-subtitle">Hospital Universitário PUC-MG</div>
+        </div>
+    </div>
+    <nav>
+        <a href="medicamentos.html">
+            <span class="material-symbols-outlined">medication</span>
+            Registro de Medicamentos
+        </a>
+        <a href="estoque.html">
+            <span class="material-symbols-outlined">inventory_2</span>
+            Controle de Estoque
+        </a>
+        <a href="./relatorios.html">
+            <span class="material-symbols-outlined">analytics</span>
+            Relatórios
+        </a>
+        <a href="usuarios.html" class="active">
+            <span class="material-symbols-outlined">manage_accounts</span>
+            Gestão de Usuários
+        </a>
+    </nav>
+    <div class="sidebar-footer">
+        <a href="javascript:void(0)" onclick="SCMUDB.exportData()" title="Baixar estado atual como db.json">
+            <span class="material-symbols-outlined">download</span>
+            Exportar
+        </a>
+        <a href="javascript:void(0)" onclick="if(confirm('Resetar todos os dados para o estado inicial?')){SCMUDB.resetData().then(()=>location.reload())}" title="Apagar alterações e voltar ao seed" style="color: var(--error);">
+            <span class="material-symbols-outlined">restart_alt</span>
+            Resetar
+        </a>
+    </div>
+</aside>
+
+<main>
+    <header>
+        <div class="header-search">
+            <button class="mobile-menu-btn" onclick="document.querySelector('aside').classList.toggle('active-mobile')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <span class="material-symbols-outlined" style="color:var(--outline);">search</span>
+            <input type="text" id="search-input" placeholder="Buscar usuários" aria-label="Buscar usuários"/>
+        </div>
+        <div class="header-right">
+            <div class="header-actions">
+                <button class="icon-btn" type="button" aria-label="Abrir notificações" aria-expanded="false" data-notification-toggle>
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+            </div>
+            <div class="divider"></div>
+            <div class="user-block">
+                <div class="user-info">
+                    <div class="user-name"></div>
+                    <div class="user-role"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="canvas">
+
+        <div class="page-header">
+            <div>
+                <h2 class="page-title">Gestão de Usuários</h2>
+                <p class="page-subtitle">Gerencie níveis de acesso, permissões e perfis profissionais dentro do Hospital Universitário PUC-MG.</p>
+            </div>
+            <button class="btn-primary" id="btn-novo-usuario">
+                <span class="material-symbols-outlined">person_add</span>
+                Adicionar Usuário
+            </button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue"><span class="material-symbols-outlined">group</span></div>
+                <div>
+                    <div class="stat-label">Total de Usuários</div>
+                    <div class="stat-value" id="stat-total">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple"><span class="material-symbols-outlined">pulse_alert</span></div>
+                <div>
+                    <div class="stat-label">Ativos Agora</div>
+                    <div class="stat-value" id="stat-active">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon red"><span class="material-symbols-outlined">pending_actions</span></div>
+                <div>
+                    <div class="stat-label">Aprovações Pendentes</div>
+                    <div class="stat-value" id="stat-pending">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-card-header">
+                <span class="table-card-title">Diretório de Usuários</span>
+                <div class="table-card-actions">
+                    <button class="btn-tbl">Filtrar</button>
+                    <button class="btn-tbl">Exportar PDF</button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nome e Perfil</th>
+                    <th>E-mail</th>
+                    <th>Função</th>
+                    <th>Status</th>
+                    <th class="right">Ações</th>
+                </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+
+            <div class="table-footer">
+                <span id="tbl-info">Exibindo 0 resultados</span>
+                <div class="pagination">
+                    <button class="page-btn">Anterior</button>
+                    <button class="page-btn current">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">Próximo</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span>© 2026 Hospital Universitário PUC-MG Management Unit</span>
+        <span>Ver. 1.0.0-prototype</span>
+    </footer>
+</main>
+
+<div class="modal-overlay" id="modal-form">
+    <div class="modal">
+        <div class="modal-head">
+            <h3 id="modal-title">Adicionar Usuário</h3>
+            <button class="icon-btn" id="btn-close-form">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="field-label" for="f-nome">Nome</label>
+                    <input class="form-input" id="f-nome" type="text" placeholder="Ex.: Dr. João Silva"/>
+                </div>
+                <div class="form-group">
+                    <label class="field-label" for="f-dept">Departamento</label>
+                    <div class="select-wrap">
+                        <select class="form-select" id="f-dept">
+                            <option value="Administração">Administração</option>
+                            <option value="Farmácia">Farmácia</option>
+                            <option value="Cardiologia">Cardiologia</option>
+                            <option value="Cirurgia Geral">Cirurgia Geral</option>
+                            <option value="Clínica Médica">Clínica Médica</option>
+                            <option value="Dermatologia">Dermatologia</option>
+                            <option value="Emergência">Emergência / Pronto-Socorro</option>
+                            <option value="Endocrinologia">Endocrinologia</option>
+                            <option value="Ginecologia e Obstetrícia">Ginecologia e Obstetrícia</option>
+                            <option value="Hematologia">Hematologia</option>
+                            <option value="Infectologia">Infectologia</option>
+                            <option value="Neurologia">Neurologia</option>
+                            <option value="Oncologia">Oncologia</option>
+                            <option value="Ortopedia">Ortopedia</option>
+                            <option value="Pediatria">Pediatria</option>
+                            <option value="Pneumologia">Pneumologia</option>
+                            <option value="Psiquiatria">Psiquiatria</option>
+                            <option value="Radiologia">Radiologia</option>
+                            <option value="Urologia">Urologia</option>
+                            <option value="UTI">UTI (Unidade de Terapia Intensiva)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="field-label" for="f-email">E-mail</label>
+                <input class="form-input" id="f-email" type="email" placeholder="exemplo@email.com"/>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="field-label" for="f-role">Função</label>
+                    <div class="select-wrap">
+                        <select class="form-select" id="f-role">
+                            <option value="admin">Administrador</option>
+                            <option value="pharmacist">Farmacêutico</option>
+                            <option value="doctor">Médico</option>
+                            <option value="nurse">Enfermeiro</option>
+                            <option value="technician">Técnico</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="field-label" for="f-status">Status</label>
+                    <div class="select-wrap">
+                        <select class="form-select" id="f-status">
+                            <option value="active">Ativo</option>
+                            <option value="inactive">Inativo</option>
+                            <option value="pending">Pendente</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <p class="form-error" id="form-error">Preencha todos os campos obrigatórios.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="btn-cancel-form">Cancelar</button>
+                <button class="btn-submit" id="btn-submit-form">Adicionar Usuário</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-confirm">
+    <div class="modal confirm">
+        <div class="confirm-body">
+            <div class="confirm-icon">
+                <span class="material-symbols-outlined">person_remove</span>
+            </div>
+            <div class="confirm-title">Remover usuário?</div>
+            <p class="confirm-text" id="confirm-text">Esta ação não pode ser desfeita.</p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" id="btn-cancel-confirm">Cancelar</button>
+                <button class="btn-danger" id="btn-confirm-delete">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/db.js"></script>
+<script src="../js/usuarios.js"></script>
+</body>
+</html>
