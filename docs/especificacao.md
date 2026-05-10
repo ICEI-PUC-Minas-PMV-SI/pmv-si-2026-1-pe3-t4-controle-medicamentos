@@ -104,11 +104,11 @@ Integração com sistemas hospitalares externos
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, a secretária poderá gerenciar as matrículas e professores no sistema, enquanto o coordenador, além dessas funções, poderá gerenciar os cursos de aperfeiçoamento.
-
+Como observado no diagrama de casos de uso da Figura 1, o sistema de gestão de medicamentos é utilizado por diferentes atores do ambiente hospitalar, cada um com responsabilidades específicas. O médico pode prescrever medicamentos e verificar a criticidade dos pacientes, além de consultar a disponibilidade de medicamentos e alertas relacionados ao estoque. O enfermeiro ou técnico é responsável por consultar disponibilidade e alertas, bem como administrar medicamentos aos pacientes.
+O farmacêutico ou auxiliar possui acesso às funcionalidades de gerenciamento de estoque e vencimentos, além do registro de entradas e saídas de medicamentos, permitindo o controle da movimentação dos insumos hospitalares. Já o gestor da unidade pode acessar funcionalidades de auditoria e dashboards de consumo, possibilitando o acompanhamento estratégico do uso de medicamentos e do desempenho operacional da unidade de saúde.
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![Image](https://github.com/user-attachments/assets/f507dcef-a171-4599-b0c7-7c250027be8b)
+![img.png](prints/img10.png)
  
 ### 3.4.2 Descrições de Casos de Uso
 
@@ -236,13 +236,12 @@ Fluxo Principal:
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **Medicamento**, que gerencia as informações gerais e se relaciona com Lote para controle de fabricação e validade. A classe **Estoque** mantém a quantidade atual e é atualizada por meio de instâncias de **Movimentacao** (controladas por **TipoMovimentacao**). Cada movimentação é realizada por um **Usuario**, que possui um **PerfilUsuario** associado definindo seu nível de acesso. Por fim, a classe **Relatorio** compila essas informações para auditoria e controle gerencial.
-
+A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **Medicamento**, que gerencia as informações gerais e se relaciona com **Lote** para controle de fabricação e validade. A classe **Estoque** agrega um ou mais medicamentos, mantendo o controle de quantidade atual e mínima, e é vinculada aos respectivos lotes. As movimentações de estoque são registradas pela classe **Movimentacao**, que captura tipo, quantidade e saldo resultante, sendo cada registro associado ao **Usuario** responsável pela operação.
 #### Figura 2: Diagrama de Classes do Sistema.
  
 
 <p align="center">
-  <img src="https://tinyurl.com/mwpn7wna" alt="Diagrama do sistema">
+  <img src="https://tinyurl.com/2at8dapn" alt="Diagrama do sistema">
 </p>
 
 
@@ -252,9 +251,7 @@ A Figura 2 mostra o diagrama de classes do sistema. O modelo destaca a classe **
 |---|------|-----------|
 | 1 | Medicamento | Cadastro geral de medicamentos disponíveis no sistema, contendo nome e categoria. |
 | 2 | Lote | Registro de lotes de um medicamento, contendo número, data de fabricação e data de validade. |
-| 3 | Estoque | Controle da quantidade atual e mínima de um medicamento, vinculado a um ou mais lotes. |
+| 3 | Estoque | Controle da quantidade atual e mínima, agregando um ou mais medicamentos e seus respectivos lotes. |
 | 4 | Movimentacao | Registro de entradas, saídas, descartes, ajustes e transferências de medicamentos no estoque. |
-| 5 | Usuario | Cadastro dos profissionais de saúde com acesso ao sistema, contendo nome, senha e perfil de permissão. |
-| 6 | Relatorio | Geração de relatórios de movimentações, estoque e vencimentos em um período determinado. |
-| 7 | TipoMovimentacao | Enumeração dos tipos possíveis de movimentação: ENTRADA, SAIDA, DESCARTE, AJUSTE e TRANSFERENCIA. |
-| 8 | PerfilUsuario | Enumeração dos perfis de acesso: ADMINISTRADOR, FARMACEUTICO, ENFERMEIRO e CONSULTOR. |
+| 5 | Usuario | Cadastro dos profissionais de saúde com acesso ao sistema, contendo nome e perfil de permissão. |
+
