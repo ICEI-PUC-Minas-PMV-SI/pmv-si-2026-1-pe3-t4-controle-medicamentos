@@ -98,13 +98,14 @@ Integração com sistemas hospitalares externos
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
 | Gestor/Coordenador | Usuário com visão gerencial, responsável por gerar relatórios de auditoria, monitorar o uso do sistema e supervisionar as operações gerais do estoque. |
 | Farmacêutico       | Responsável principal pelo gerenciamento de medicamentos, incluindo cadastro, atualização, remoção e registro de entradas no estoque.                  |
+| Médico             | Profissional que consulta disponibilidade de medicamentos, nível de criticidade e alertas de estoque para suporte à conduta clínica.                    |
 | Enfermeiro/Técnico | Usuário que realiza a saída de medicamentos do estoque para administração aos pacientes e pode consultar a disponibilidade.                             |
 | Auxiliar de Farmácia | Auxilia nas operações de saída de medicamentos do estoque, sob supervisão do farmacêutico.                                                           |
 
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, o sistema de gestão de medicamentos é utilizado por diferentes atores do ambiente hospitalar, cada um com responsabilidades específicas. O médico pode prescrever medicamentos e verificar a criticidade dos pacientes, além de consultar a disponibilidade de medicamentos e alertas relacionados ao estoque. O enfermeiro ou técnico é responsável por consultar disponibilidade e alertas, bem como administrar medicamentos aos pacientes.
+Como observado no diagrama de casos de uso da Figura 1, o sistema de gestão de medicamentos é utilizado por diferentes atores do ambiente hospitalar, cada um com responsabilidades específicas. O médico pode prescrever medicamentos e verificar a criticidade dos medicamentos, além de consultar a disponibilidade de medicamentos e alertas relacionados ao estoque. O enfermeiro ou técnico é responsável por consultar disponibilidade e alertas, bem como administrar medicamentos aos pacientes.
 O farmacêutico ou auxiliar possui acesso às funcionalidades de gerenciamento de estoque e vencimentos, além do registro de entradas e saídas de medicamentos, permitindo o controle da movimentação dos insumos hospitalares. Já o gestor da unidade pode acessar funcionalidades de auditoria e dashboards de consumo, possibilitando o acompanhamento estratégico do uso de medicamentos e do desempenho operacional da unidade de saúde.
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
@@ -192,7 +193,7 @@ Fluxos Alternativos:
 
 Sumário: Permite aos usuários consultar a disponibilidade de medicamentos em estoque e monitorar aqueles próximos ao vencimento, facilitando a gestão e evitando perdas.
 
-Atores Primários: Farmacêutico, Enfermeiro/Técnico, Gestor/Coordenador
+Atores Primários: Médico, Farmacêutico, Enfermeiro/Técnico, Gestor/Coordenador
 
 Pré-condições: Usuário autenticado.
 
