@@ -316,6 +316,7 @@ Na perspectiva do usuário, há separação clara entre telas públicas (acesso)
   <img src="prints/img_2.png" alt="Protótipo (2) — fluxos e comportamento" width="720" />
 </p>
 <p align="center"><em>Figura 3 — Exemplo de protótipo (fluxos e comportamento).</em></p>
+
 ### Princípios gestálticos (Gestalt)
 
 #### Proximidade
@@ -335,6 +336,7 @@ Reaproveitamento de padrões: cards de estatísticas repetem estrutura, tabelas 
   <img src="prints/img_5.png" alt="Princípio da similaridade" width="720" />
 </p>
 <p align="center"><em>Figura 5 — Similaridade: componentes repetidos com variação de cor/estado.</em></p>
+
 ####  Região comum 
 
 Para facilitar o processo de localização de controles do sistema, Tabelas são apresentadas dentro de cards que unem cabeçalho, corpo e rodapé, filtros aparecem dentro de contêineres com fundo suave (pílulas) e modais surgem como janela central sobre um overlay. O objetivo é deixar a estrutura mais legível
