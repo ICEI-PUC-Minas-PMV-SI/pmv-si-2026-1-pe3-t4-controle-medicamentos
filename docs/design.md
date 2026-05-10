@@ -291,6 +291,11 @@ Com base nesses mapas, torna-se possível desenvolver um sistema mais alinhado �
 
 A linguagem visual do SCMU adota um “tom clínico”: superfícies claras, bordas suaves e sombras discretas. A paleta usa azul como cor de ação principal e reserva cores como vermelho/âmbar/verde para comunicar criticidade e status (Protocolo de Manchester). Em relação à tipografia, há o uso de fontes sem serifa, com diferenças de peso e tamanho entre títulos, rótulos e valores, a fim de definir uma hierarquia entre os elemtntos.
 
+<p align="center">
+  <img src="prints/img.png" alt="Identidade visual do SCMU" width="720" />
+</p>
+<p align="center"><em>Figura 1 — Identidade visual (paleta de cores e tipografia).</em></p>
+
 Objetivo dessas escolhas é criar uma interface de clara comunicação, baixa distração, para que o usuário foque em tarefas sensíveis. 
 
 ### Estrutura e navegação
@@ -302,19 +307,42 @@ O objetivo é um maior previsibilidade das interações a redução do tempo de 
 ### Fluxos e comportamento 
 Na perspectiva do usuário, há separação clara entre telas públicas (acesso) e telas internas (operações). O sistema fornece **feedback de processamento** em ações como login e **retorna mensagens de erro** quando a operação não pode ser concluída. Para tarefas críticas, como remoção de registros e saídas de estoque, há ação de confirmação e validações são executadas, reduzindo risco operacional. Nos relatórios, a exportação é parte do fluxo, apoiando auditoria e rotinas gerenciais.
 
+<p align="center">
+  <img src="prints/img_1.png" alt="Protótipo (1) — fluxos e comportamento" width="720" />
+</p>
+<p align="center"><em>Figura 2 — Exemplo de protótipo (fluxos e comportamento).</em></p>
+
+<p align="center">
+  <img src="prints/img_2.png" alt="Protótipo (2) — fluxos e comportamento" width="720" />
+</p>
+<p align="center"><em>Figura 3 — Exemplo de protótipo (fluxos e comportamento).</em></p>
 ### Princípios gestálticos (Gestalt)
 
 #### Proximidade
 
 A fim de reduzir ambiguidades e acelerar a varredura visual,  usa-se da proximidade para formar grupos funcionais sem precisar de explicações adicionais. Campos de formulário aparecem em blocos com espaçamento consistente, ações relacionadas ficam próximas entre si (tanto no topo do card quanto por linha de tabela) e filtros se concentram em uma faixa única antes da lista.
 
+<p align="center">
+  <img src="prints/img_3.png" alt="Princípio da proximidade" width="720" />
+</p>
+<p align="center"><em>Figura 4 — Proximidade: agrupamento visual de campos e ações relacionadas.</em></p>
+
 #### Similaridade
 
 Reaproveitamento de padrões: cards de estatísticas repetem estrutura, tabelas preservam o mesmo estilo e comportamento entre telas, e badges mantêm formato e tipografia, variando principalmente cor e rótulo.
 
+<p align="center">
+  <img src="prints/img_5.png" alt="Princípio da similaridade" width="720" />
+</p>
+<p align="center"><em>Figura 5 — Similaridade: componentes repetidos com variação de cor/estado.</em></p>
 ####  Região comum 
 
 Para facilitar o processo de localização de controles do sistema, Tabelas são apresentadas dentro de cards que unem cabeçalho, corpo e rodapé, filtros aparecem dentro de contêineres com fundo suave (pílulas) e modais surgem como janela central sobre um overlay. O objetivo é deixar a estrutura mais legível
+
+<p align="center">
+  <img src="prints/img_4.png" alt="Princípio da região comum" width="720" />
+</p>
+<p align="center"><em>Figura 6 — Região comum: conteúdos dentro de cards/contêineres para leitura rápida.</em></p>
 
 #### Continuidade 
 
@@ -332,14 +360,29 @@ A linguagem de componentes (cards, tabelas, badges, modais e botões) se mantém
 
 Há suporte indireto a “atalhos” ao manter busca sempre disponível e oferecer ações rápidas por linha, reduzindo cliques em tarefas recorrentes. A exportação em relatórios também acelera rotinas frequentes.
 
+<p align="center">
+  <img src="prints/img_6.png" alt="Atalhos e ações rápidas" width="720" />
+</p>
+<p align="center"><em>Figura 7 — Ações rápidas por linha e busca disponível para acelerar tarefas.</em></p>
+
 #### Oferecer feedback informativo
 
 O feedback informativo é oferecido por estados de carregamento no login, mensagens de erro específicas e indicador de notificações não lidas, além da possibilidade de marcar todas como lidas.
+
+<p align="center">
+  <img src="prints/img_7.png" alt="Feedback informativo" width="720" />
+</p>
+<p align="center"><em>Figura 8 — Feedback informativo: estados, mensagens e notificações.</em></p>
 
 #### Projetar diálogos com fechamento
 
 Os diálogos tendem a ter fechamento claro. O fluxo de recuperar senha termina em um estado de sucesso, e modais de cadastro e edição encerram o fluxo ao confirmar. 
 Confirmações comunicam consequências antes de ações destrutivas.
+
+<p align="center">
+  <img src="prints/img_8.png" alt="Diálogo com fechamento" width="720" />
+</p>
+<p align="center"><em>Figura 9 — Diálogo com fechamento: confirmação e conclusão de fluxo.</em></p>
 
 #### Prevenir erros
 
